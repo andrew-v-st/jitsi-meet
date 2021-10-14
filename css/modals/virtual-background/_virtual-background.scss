@@ -11,7 +11,8 @@
     .thumbnail:hover,
     .blur:hover,
     .slight-blur:hover,
-    .virtual-background-none:hover {
+    .virtual-background-none:hover,
+    .incognito:hover {
         opacity: 0.5;
         border: 2px solid #99bbf3;
         @media (max-width: 632px) {
@@ -83,13 +84,36 @@
         padding: 0 10px;
     }
 
+    .incognito {
+        background: #686060;
+        padding: 0 10px;
+    }
+
+    .incognito-selected {
+        background: #686060;
+        border: 2px solid #246fe5;
+        padding: 0 10px;
+    }
+
+    .incognito {
+        background: #686060;
+        padding: 0 10px;
+    }
+
+    .incognito-selected {
+        background: #686060;
+        border: 2px solid #246fe5;
+        padding: 0 10px;
+    }
+
     @media (max-width: 632px) {
         font-size: 1.5vw;
         .desktop-share,
         .virtual-background-none,
         .thumbnail,
         .blur,
-        .slight-blur {
+        .slight-blur,
+        .incognito {
             height: 60px;
             width: 60px;
         }
@@ -97,7 +121,8 @@
         .thumbnail-selected,
         .none-selected,
         .blur-selected,
-        .slight-blur-selected {
+        .slight-blur-selected,
+        .incognito-selected {
             height: 60px;
             width: 60px;
         }

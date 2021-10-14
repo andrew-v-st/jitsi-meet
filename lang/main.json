@@ -380,6 +380,7 @@
         "title": "Virtual backgrounds",
         "blur": "Blur",
         "slightBlur": "Slight Blur",
+        "incognito": "Incognito Mode",
         "removeBackground": "Remove background",
         "addBackground": "Add background",
         "pleaseWait": "Please wait...",

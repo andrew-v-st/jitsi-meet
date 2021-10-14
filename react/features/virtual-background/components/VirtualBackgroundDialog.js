@@ -195,6 +195,23 @@ function VirtualBackground({
         }
     }, [ enableSlideBlur ]);
 
+    const enableIncognitoMode = useCallback(async () => {
+        setOptions({
+            backgroundType: VIRTUAL_BACKGROUND_TYPE.INCOGNITO,
+            enabled: true,
+            blurValue: 8,
+            selectedThumbnail: 'incognito'
+        });
+        logger.info('"Incognito" option setted for virtual background preview!');
+
+    }, []);
+
+    const enableIncognitoModeKeyPress = useCallback(e => {
+        if (e.key === ' ' || e.key === 'Enter') {
+            e.preventDefault();
+            enableIncognitoMode();
+        }
+    }, [ enableIncognitoMode ]);
 
     const shareDesktop = useCallback(async () => {
         let isCancelled = false, url;
@@ -436,6 +453,36 @@ function VirtualBackground({
                                 role = 'radio'
                                 tabIndex = { 0 }>
                                 {t('virtualBackground.blur')}
+                            </div>
+                        </Tooltip>
+                        <Tooltip
+                            content = { t('virtualBackground.incognito') }
+                            position = { 'top' }>
+                            <div
+                                aria-checked = { _selectedThumbnail === 'incognito' }
+                                aria-label = { t('virtualBackground.incognito') }
+                                className = { _selectedThumbnail === 'incognito' ? 'background-option incognito-selected'
+                                    : 'background-option incognito' }
+                                onClick = { enableIncognitoMode }
+                                onKeyPress = { enableIncognitoModeKeyPress }
+                                role = 'radio'
+                                tabIndex = { 0 }>
+                                {t('virtualBackground.incognito')}
+                            </div>
+                        </Tooltip>
+                        <Tooltip
+                            content = { t('virtualBackground.incognito') }
+                            position = { 'top' }>
+                            <div
+                                aria-checked = { _selectedThumbnail === 'incognito' }
+                                aria-label = { t('virtualBackground.incognito') }
+                                className = { _selectedThumbnail === 'incognito' ? 'background-option incognito-selected'
+                                    : 'background-option incognito' }
+                                onClick = { enableIncognitoMode }
+                                onKeyPress = { enableIncognitoModeKeyPress }
+                                role = 'radio'
+                                tabIndex = { 0 }>
+                                {t('virtualBackground.incognito')}
                             </div>
                         </Tooltip>
                         <Tooltip
