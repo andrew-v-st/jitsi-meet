@@ -471,21 +471,6 @@ function VirtualBackground({
                             </div>
                         </Tooltip>
                         <Tooltip
-                            content = { t('virtualBackground.incognito') }
-                            position = { 'top' }>
-                            <div
-                                aria-checked = { _selectedThumbnail === 'incognito' }
-                                aria-label = { t('virtualBackground.incognito') }
-                                className = { _selectedThumbnail === 'incognito' ? 'background-option incognito-selected'
-                                    : 'background-option incognito' }
-                                onClick = { enableIncognitoMode }
-                                onKeyPress = { enableIncognitoModeKeyPress }
-                                role = 'radio'
-                                tabIndex = { 0 }>
-                                {t('virtualBackground.incognito')}
-                            </div>
-                        </Tooltip>
-                        <Tooltip
                             content = { t('virtualBackground.desktopShare') }
                             position = { 'top' }>
                             <div

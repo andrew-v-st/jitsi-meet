@@ -133,7 +133,7 @@ export default class JitsiStreamBackgroundEffect {
             this._outputCanvasCtx.translate(-this._outputCanvasElement.width, 0);
         }
         //Don't draw foreground layer if INCOGNITO is enabled
-        if (backgroundType != VIRTUAL_BACKGROUND_TYPE.INCOGNITO) {
+        if (backgroundType !== VIRTUAL_BACKGROUND_TYPE.INCOGNITO) {
             this._outputCanvasCtx.drawImage(this._inputVideoElement, 0, 0);
         }
         if (backgroundType === VIRTUAL_BACKGROUND_TYPE.DESKTOP_SHARE) {
