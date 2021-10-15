@@ -28,7 +28,7 @@
     },
     "calendarSync": {
         "addMeetingURL": "Voeg ’n vergaderingskakel by",
-        "confirmAddLink": "Wil u ’n Jitsi-skakel by dié geleentheid voeg?",
+        "confirmAddLink": "Wil u ’n WorldERP-skakel by dié geleentheid voeg?",
         "error": {
             "appConfiguration": "",
             "generic": "",
@@ -276,7 +276,7 @@
         "answer": "Antwoord",
         "audioCallTitle": "Inkomende oproep",
         "decline": "Weier",
-        "productLabel": "vanaf Jitsi Meet",
+        "productLabel": "vanaf WorldERP Meet",
         "videoCallTitle": "Inkomende video-oproep"
     },
     "info": {

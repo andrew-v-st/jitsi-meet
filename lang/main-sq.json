@@ -41,7 +41,7 @@
     },
     "calendarSync": {
         "addMeetingURL": "Shtoni një lidhje takimi",
-        "confirmAddLink": "Doni të shtohet një lidhje Jitsi te kjo veprimtari?",
+        "confirmAddLink": "Doni të shtohet një lidhje WorldERP te kjo veprimtari?",
         "error": {
             "appConfiguration": "Integrimi i kalendarëve s’është formësuar si duhet.",
             "generic": "Ndodhi një gabim. Ju lutemi, kontrolloni rregullimet për kalendarin tuaj, ose provoni të rifreskoni kalendarin.",
@@ -380,7 +380,7 @@
         "answer": "Përgjigjuni",
         "audioCallTitle": "Thirrje ardhëse",
         "decline": "Hidhe tej",
-        "productLabel": "nga Jitsi Meet",
+        "productLabel": "nga WorldERP Meet",
         "videoCallTitle": "Thirrje ardhëse me video"
     },
     "info": {
@@ -550,7 +550,7 @@
         "newDeviceAudioTitle": "U pikas pajisje audio e re",
         "newDeviceAction": "Përdore",
         "OldElectronAPPTitle": "Cenueshmëri sigurie!",
-        "oldElectronClientDescription1": "Duket se përdorni një version të vjetër të klientit Jitsi Meet, i cili përmban cenueshmëri të ditura sigurie. Ju lutemi, siguroni përditësimin e tij me ",
+        "oldElectronClientDescription1": "Duket se përdorni një version të vjetër të klientit WorldERP Meet, i cili përmban cenueshmëri të ditura sigurie. Ju lutemi, siguroni përditësimin e tij me ",
         "oldElectronClientDescription2": "montimin tonë më të ri",
         "oldElectronClientDescription3": " që tani!",
         "moderationInEffectDescription": "Ju lutemi, nëse doni të flisni, ngrini dorën",
@@ -985,11 +985,11 @@
         "getHelp": "Merrni ndihmë",
         "go": "SHKO",
         "goSmall": "SHKO",
-        "headerTitle": "Jitsi Meet",
+        "headerTitle": "WorldERP Meet",
         "headerSubtitle": "Takime me siguri dhe me cilësi të lartë",
         "info": "Hollësi për dial-in",
         "join": "KRIJONI / MERRNI PJESË",
-        "jitsiOnMobile": "Jitsi në celular – Shkarkoni aplikacione tona dhe nisni një takim prej ngado",
+        "jitsiOnMobile": "WorldERP në celular – Shkarkoni aplikacione tona dhe nisni një takim prej ngado",
         "mobileDownLoadLinkIos": "Shkarkoni aplikacionin për celular me iOS",
         "mobileDownLoadLinkAndroid": "Shkarkoni aplikacionin për celular me Android",
         "mobileDownLoadLinkFDroid": "Shkarkoni aplikacionin për celular me F-Droid",
@@ -1009,7 +1009,7 @@
         "logo":{
            "calendar":"Stemë Calendar-i",
            "microsoftLogo":"Stemë Microsoft-i",
-           "logoDeepLinking":"Stemë Jitsi Meet",
+           "logoDeepLinking":"Stemë WorldERP Meet",
            "desktopPreviewThumbnail":"Miniaturë paraparjeje në desktop",
            "googleLogo":"Stemë Google",
            "policyLogo":"Stemë Policy"

@@ -1095,11 +1095,11 @@
         "getHelp": "أريد مساعدة",
         "go": "ابدأ",
         "goSmall": "ابدأ",
-        "headerTitle": "Jitsi Meet",
+        "headerTitle": "WorldERP Meet",
         "headerSubtitle": "Secure and high quality meetings",
         "info": "معلومات",
         "join": "أنشئ / انضم",
-        "jitsiOnMobile": "Jitsi on mobile – download our apps and start a meeting from anywhere",
+        "jitsiOnMobile": "WorldERP on mobile – download our apps and start a meeting from anywhere",
         "mobileDownLoadLinkIos": "Download mobile app for iOS",
         "mobileDownLoadLinkAndroid": "Download mobile app for Android",
         "mobileDownLoadLinkFDroid": "Download mobile app for F-Droid",
@@ -1119,7 +1119,7 @@
         "logo":{
            "calendar":"Calendar logo",
            "microsoftLogo":"Microsoft logo",
-           "logoDeepLinking":"Jitsi meet logo",
+           "logoDeepLinking":"WorldERP meet logo",
            "desktopPreviewThumbnail":"Desktop preview thumbnail",
            "googleLogo":"Google Logo",
            "policyLogo":"Policy logo"

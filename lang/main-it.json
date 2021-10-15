@@ -41,7 +41,7 @@
     },
     "calendarSync": {
         "addMeetingURL": "Aggiungi un collegamento alla riunione",
-        "confirmAddLink": "Vuoi aggiungere un collegamento Jitsi a questo evento?",
+        "confirmAddLink": "Vuoi aggiungere un collegamento WorldERP a questo evento?",
         "error": {
             "appConfiguration": "L'integrazione del calendario non è configurata in modo appropriato.",
             "generic": "È stato riscontrato un errore. Controllare le impostazioni del calendario o ricaricare la pagina.",
@@ -361,7 +361,7 @@
         "Yes": "Sì",
         "yourEntireScreen": "Schermo intero",
         "remoteUserControls": "Controlli dell'utente remoto {{username}}",
-        "localUserControls": "Controlli dell'utente locale"        
+        "localUserControls": "Controlli dell'utente locale"
     },
     "dialOut": {
         "statusMessage": "è {{status}}"
@@ -412,7 +412,7 @@
         "answer": "Rispondi",
         "audioCallTitle": "Chiamata in arrivo",
         "decline": "Chiudi",
-        "productLabel": "da Jitsi Meet",
+        "productLabel": "da WorldERP Meet",
         "videoCallTitle": "Videochiamata in arrivo"
     },
     "info": {
@@ -587,7 +587,7 @@
         "newDeviceAudioTitle": "Trovata nuova origine audio",
         "newDeviceAction": "OK, usala",
         "OldElectronAPPTitle": "Falla di sicurezza!",
-        "oldElectronClientDescription1": "Sembri stare usando una versione obsoleta del client Jitsi Meet che ha dei problemi di sicurezza noti. Assicurati di aggiornarla presso il nostro ",
+        "oldElectronClientDescription1": "Sembri stare usando una versione obsoleta del client WorldERP Meet che ha dei problemi di sicurezza noti. Assicurati di aggiornarla presso il nostro ",
         "oldElectronClientDescription2": "ultima build",
         "oldElectronClientDescription3": " ora!",
         "moderationInEffectDescription": "Alza la mano, se vuoi prender la parola, per favore.",
@@ -1064,7 +1064,7 @@
         "connectionInfo": "Info connessione",
         "domute": "Disattiva audio",
         "domuteVideo": "Disattiva video",
-        "domuteOthers": "Disattiva audio di tutti gli altri",        
+        "domuteOthers": "Disattiva audio di tutti gli altri",
         "domuteVideoOfOthers": "Disattiva video di tutti gli altri",
         "flip": "Rifletti",
         "grantModerator": "Autorizza moderatore",
@@ -1095,11 +1095,11 @@
         "getHelp": "Trova aiuto",
         "go": "VAI",
         "goSmall": "VAI",
-        "headerTitle": "Jitsi Meet",
+        "headerTitle": "WorldERP Meet",
         "headerSubtitle": "Riunioni sicure e di alta qualità",
         "info": "Informazioni chiamata",
         "join": "CREA / UNISCITI",
-        "jitsiOnMobile": "Jitsi su mobile – scarica le nostre app e dai inizio ad una riunione dovunque tu sia",
+        "jitsiOnMobile": "WorldERP su mobile – scarica le nostre app e dai inizio ad una riunione dovunque tu sia",
         "mobileDownLoadLinkIos": "Scarica app per iOS",
         "mobileDownLoadLinkAndroid": "Scarica app per Android",
         "mobileDownLoadLinkFDroid": "Scarica app da F-Droid",
@@ -1119,7 +1119,7 @@
         "logo":{
            "calendar":"Logo calendario",
            "microsoftLogo":"Logo Microsoft",
-           "logoDeepLinking":"Logo Jitsi meet",
+           "logoDeepLinking":"Logo WorldERP meet",
            "desktopPreviewThumbnail":"Icona anteprima desktop",
            "googleLogo":"Logo Google",
            "policyLogo":"Logo normativa"

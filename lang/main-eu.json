@@ -39,7 +39,7 @@
     "audioOnly": { "audioOnly": "Banda-zabalera txikia" },
     "calendarSync": {
         "addMeetingURL": "Bileraren esteka gehitu",
-        "confirmAddLink": "Jitsi esteka gertaera honetara gehitu nahi duzu?",
+        "confirmAddLink": "WorldERP esteka gertaera honetara gehitu nahi duzu?",
         "error": {
             "appConfiguration": "Egutegiaren integrazioa ez dago ondo konfiguratuta.",
             "generic": "Errore bat gertatu da. Egiaztatu zure egutegiaren ezarpenak edo saiatu egutegia eguneratzen.",
@@ -368,7 +368,7 @@
         "answer": "Erantzun",
         "audioCallTitle": "Sarrerako deia",
         "decline": "Baztertu",
-        "productLabel": "Jitsi Meet-etik",
+        "productLabel": "WorldERP Meet-etik",
         "videoCallTitle": "Bideo-deia sartzen"
     },
     "info": {
@@ -536,7 +536,7 @@
         "newDeviceAudioTitle": "Audio-gailu berria hauteman da",
         "newDeviceAction": "Erabilera",
         "OldElectronAPPTitle": "Zaharkitutako aplikazioa",
-        "oldElectronClientDescription1": "Segurtasun arazoak dituen Jitsi Meet aplikazioa erabiltzen arai zara. Eguneratu ezazu",
+        "oldElectronClientDescription1": "Segurtasun arazoak dituen WorldERP Meet aplikazioa erabiltzen arai zara. Eguneratu ezazu",
         "oldElectronClientDescription2": "bertsio berriagora",
         "oldElectronClientDescription3": "ORAIN!",
         "groupTitle": "Jakinarazpenak"
@@ -946,11 +946,11 @@
         "getHelp": "Lortu laguntza",
         "go": "JOAN",
         "goSmall": "JOAN",
-        "headerTitle": "Jitsi Meet",
+        "headerTitle": "WorldERP Meet",
         "headerSubtitle": "Secure and high quality meetings",
         "info": "Informazioa",
         "join": "SORTU / SARTU",
-        "jitsiOnMobile": "Jitsi eramangarrian \u2013 deskargatu gure aplikazioak eta hasi bilerak edonondik",
+        "jitsiOnMobile": "WorldERP eramangarrian \u2013 deskargatu gure aplikazioak eta hasi bilerak edonondik",
         "mobileDownLoadLinkIos": "Deskargatu iOS aplikazioa",
         "mobileDownLoadLinkAndroid": "Deskargatu Android aplikazioa",
         "mobileDownLoadLinkFDroid": "Deskargatu aplikazioa F-Droid-etik",
@@ -970,7 +970,7 @@
         "logo": {
             "calendar": "Egutegiaren logoa",
             "microsoftLogo": "Microsoften logo",
-            "logoDeepLinking": "Jitsi meeten logo",
+            "logoDeepLinking": "WorldERP meeten logo",
             "desktopPreviewThumbnail": "Aurrebistaren iruditxoa",
             "googleLogo": "Googleren logoa",
             "policyLogo": "Politikaren logoa"

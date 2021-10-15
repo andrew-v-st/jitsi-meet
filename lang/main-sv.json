@@ -49,7 +49,7 @@
     },
     "calendarSync": {
         "addMeetingURL": "Lägg till en möteslänk",
-        "confirmAddLink": "Vill du lägga till en Jitsi-länk i händelsen?",
+        "confirmAddLink": "Vill du lägga till en WorldERP-länk i händelsen?",
         "error": {
             "appConfiguration": "Kalenderintegrationen är inte rätt inställd.",
             "generic": "Ett fel har inträffat. Kontrollera dina kalenderinställningar eller uppdatera kalendern.",
@@ -413,7 +413,7 @@
         "answer": "Svara",
         "audioCallTitle": "Inkommande samtal",
         "decline": "Avvisa",
-        "productLabel": "från Jitsi Meet",
+        "productLabel": "från WorldERP Meet",
         "videoCallTitle": "Inkommande videosamtal"
     },
     "info": {
@@ -1053,7 +1053,7 @@
         "addMeetingName": "Lägg till mötesnamn",
         "headerTitle": "Jitisi Meet",
         "headerSubtitle": "Säkra- och högkvalitet möten",
-        "jitsiOnMobile": "Jitsi på mobilen - ladda ner våra appar och starta ett möte var som helst",
+        "jitsiOnMobile": "WorldERP på mobilen - ladda ner våra appar och starta ett möte var som helst",
         "mobileDownLoadLinkIos": "Ladda ner mobilappen för iOS",
         "mobileDownLoadLinkAndroid": "Ladda ner mobilappen för Android",
         "mobileDownLoadLinkFDroid": "Ladda ner mobilappen för F-droid",
