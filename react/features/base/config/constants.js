@@ -17,6 +17,7 @@ export const TOOLBAR_BUTTONS = [
     'camera',
     'chat',
     'closedcaptions',
+    'incognito',
     'desktop',
     'download',
     'embedmeeting',

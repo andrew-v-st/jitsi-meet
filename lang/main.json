@@ -1008,7 +1008,8 @@
         "tileViewToggle": "Toggle tile view",
         "toggleCamera": "Toggle camera",
         "videomute": "Start / Stop camera",
-        "selectBackground": "Select background"
+        "selectBackground": "Select background",
+        "incognitoMode": "Enable incognito mode"
     },
     "transcribing": {
         "ccButtonTooltip": "Start / Stop subtitles",

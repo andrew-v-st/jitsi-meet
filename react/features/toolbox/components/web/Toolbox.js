@@ -90,6 +90,7 @@ import Separator from './Separator';
 import ShareDesktopButton from './ShareDesktopButton';
 import ToggleCameraButton from './ToggleCameraButton';
 import VideoSettingsButton from './VideoSettingsButton';
+import IncognitoModeButton from '../../../virtual-background/components/IncognitoModeButton';
 
 /**
  * The type of the React {@code Component} props of {@link Toolbox}.
@@ -280,6 +281,7 @@ class Toolbox extends Component<Props> {
         this._onToolbarToggleFullScreen = this._onToolbarToggleFullScreen.bind(this);
         this._onToolbarToggleRaiseHand = this._onToolbarToggleRaiseHand.bind(this);
         this._onToolbarToggleScreenshare = this._onToolbarToggleScreenshare.bind(this);
+        this._onToolbarToggleIncognitoMode = this._onToolbarToggleIncognitoMode.bind(this);
         this._onShortcutToggleTileView = this._onShortcutToggleTileView.bind(this);
         this._onEscKey = this._onEscKey.bind(this);
     }
@@ -534,6 +536,41 @@ class Toolbox extends Component<Props> {
     }
 
     /**
+     * Dispatches an action to toggle incognito mode.
+     *
+     * @private
+     * @returns {void}
+     */
+    _doToggleIncognitoMode() {
+        const {
+            _backgroundType,
+            _virtualSource,
+            _localVideo,
+            dispatch
+        } = this.props;
+
+        if (_backgroundType === VIRTUAL_BACKGROUND_TYPE.INCOGNITO) {
+            const noneOptions = {
+                enabled: false,
+                backgroundType: VIRTUAL_BACKGROUND_TYPE.NONE,
+                selectedThumbnail: VIRTUAL_BACKGROUND_TYPE.NONE,
+                backgroundEffectEnabled: false
+            };
+
+            dispatch(toggleBackgroundEffect(noneOptions, _localVideo.jitsiTrack));
+
+        }
+        else {
+            const incognitoOptions = {
+                        backgroundType: VIRTUAL_BACKGROUND_TYPE.INCOGNITO,
+                        enabled: true,
+                        blurValue: 8,
+            };
+            dispatch(toggleBackgroundEffect(incognitoOptions, _localVideo.jitsiTrack));
+        }
+    }
+
+    /**
      * Dispatches an action to toggle the video quality dialog.
      *
      * @private
@@ -597,6 +634,13 @@ class Toolbox extends Component<Props> {
             handleClick: this._onToolbarToggleScreenshare,
             group: 2
         };
+
+        const incognito = {
+            key: 'incognito',
+            Content: IncognitoModeButton,
+            handleClick: this._onToolbarToggleIncognitoMode,
+            group: 2
+        }
 
         const raisehand = {
             key: 'raisehand',
@@ -758,6 +802,7 @@ class Toolbox extends Component<Props> {
             camera,
             profile,
             desktop,
+            incognito,
             chat,
             raisehand,
             participants,
@@ -1143,6 +1188,20 @@ class Toolbox extends Component<Props> {
 
         this._closeOverflowMenuIfOpen();
         this._doToggleScreenshare();
+    }
+
+    _onToolbarToggleIncognitoMode: () => void;
+
+    /**
+     * Dispatches an action for toggling
+     * incognito mode.
+     *
+     * @private
+     * @returns {void}
+     */
+    _onToolbarToggleIncognitoMode() {
+        this._closeOverflowMenuIfOpen();
+        this._doToggleIncognitoMode();
     }
 
     /**
