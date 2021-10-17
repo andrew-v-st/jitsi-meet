@@ -6,7 +6,7 @@ import { connect } from '../../base/redux';
 import { AbstractButton } from '../../base/toolbox/components';
 import type { AbstractButtonProps } from '../../base/toolbox/components';
 import { checkBlurSupport } from '../functions';
-import logger from '../logger';
+import { VIRTUAL_BACKGROUND_TYPE } from '../../virtual-background/constants';
 
 /**
  * The type of the React {@code Component} props of {@link IncognitoModeButton}.
@@ -14,9 +14,9 @@ import logger from '../logger';
 type Props = AbstractButtonProps & {
 
     /**
-     * True if the video background is blurred or false if it is not.
+     * Virtual background properties
      */
-    _isBackgroundEnabled: boolean,
+    _virtualBackground: boolean,
 
     /**
      * The redux {@code dispatch} function.
@@ -41,16 +41,13 @@ class IncognitoModeButton extends AbstractButton<Props, *> {
      * @returns {void}
      */
     _handleClick() {
-        const { dispatch, handleClick } = this.props;
+        const { handleClick } = this.props;
 
         if (handleClick) {
             handleClick();
 
             return;
         }
-
-        // dispatch(openDialog(VirtualBackgroundDialog));
-        logger.info("IncognitoMode clicked!");
     }
 
     /**
@@ -61,7 +58,7 @@ class IncognitoModeButton extends AbstractButton<Props, *> {
      * @returns {boolean}
      */
     _isToggled() {
-        return this.props._isBackgroundEnabled;
+        return this.props._virtualBackground.backgroundType === VIRTUAL_BACKGROUND_TYPE.INCOGNITO &&  this.props._virtualBackground.backgroundEffectEnabled;
     }
 }
 
@@ -78,7 +75,7 @@ class IncognitoModeButton extends AbstractButton<Props, *> {
 function _mapStateToProps(state): Object {
 
     return {
-        _isBackgroundEnabled: Boolean(state['features/virtual-background'].backgroundEffectEnabled),
+        _virtualBackground: state['features/virtual-background'],
         visible: checkBlurSupport()
     };
 }

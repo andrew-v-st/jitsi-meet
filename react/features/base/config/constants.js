@@ -51,9 +51,9 @@ export const TOOLBAR_BUTTONS = [
 /**
  * The toolbar buttons to show on premeeting screens.
  */
-export const PREMEETING_BUTTONS = [ 'microphone', 'camera', 'select-background', 'invite', 'settings' ];
+export const PREMEETING_BUTTONS = [ 'microphone', 'camera','incognito', 'select-background', 'invite', 'settings' ];
 
 /**
   * The toolbar buttons to show on 3rdParty prejoin screen.
   */
-export const THIRD_PARTY_PREJOIN_BUTTONS = [ 'microphone', 'camera', 'select-background' ];
+export const THIRD_PARTY_PREJOIN_BUTTONS = [ 'microphone', 'camera','incognito', 'select-background' ];
