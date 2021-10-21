@@ -1,18 +1,19 @@
 // @flow
 
 import Button from '@atlaskit/button/standard-button';
-import { FieldTextStateless } from '@atlaskit/field-text';
+import {FieldTextStateless} from '@atlaskit/field-text';
 import React from 'react';
 
 import UIEvents from '../../../../../service/UI/UIEvents';
-import {
-    sendAnalytics,
-    createProfilePanelButtonEvent
-} from '../../../analytics';
-import { AbstractDialogTab } from '../../../base/dialog';
-import type { Props as AbstractDialogTabProps } from '../../../base/dialog';
-import { translate } from '../../../base/i18n';
-import { openLogoutDialog } from '../../actions';
+import {createProfilePanelButtonEvent, sendAnalytics} from '../../../analytics';
+import type {Props as AbstractDialogTabProps} from '../../../base/dialog';
+import {AbstractDialogTab} from '../../../base/dialog';
+import {translate} from '../../../base/i18n';
+import {openLogoutDialog} from '../../actions';
+import {connect} from '../../../base/redux';
+import {Avatar} from "../../../base/avatar";
+import logger from "../../../virtual-background/logger";
+import {setLoadableAvatarUrl} from "../../../base/participants";
 
 declare var APP: Object;
 
@@ -48,6 +49,11 @@ export type Props = {
     readOnlyName: boolean,
 
     /**
+     * Avatar options
+     */
+    localParticipant : Object,
+
+    /**
      * Invoked to obtain translated strings.
      */
     t: Function
@@ -77,6 +83,9 @@ class ProfileTab extends AbstractDialogTab<Props> {
         this._onAuthToggle = this._onAuthToggle.bind(this);
         this._onDisplayNameChange = this._onDisplayNameChange.bind(this);
         this._onEmailChange = this._onEmailChange.bind(this);
+        this.uploadImageButton = React.createRef();
+        this._onUploadAvatarChanged = this._onUploadAvatarChanged.bind(this);
+        this._onUploadAvatarButtonClicked = this._onUploadAvatarButtonClicked.bind(this);
     }
 
     _onDisplayNameChange: (Object) => void;
@@ -105,12 +114,72 @@ class ProfileTab extends AbstractDialogTab<Props> {
         super._onChange({ email: value });
     }
 
+    _onUploadAvatarButtonClicked: () => void;
+
+    _onUploadAvatarButtonClicked() {
+        if (this.uploadImageButton.current) {
+            this.uploadImageButton.current.click();
+        }
+    }
+
+    _onUploadAvatarChanged: () => void;
+
+    _onUploadAvatarChanged(e) {
+        const reader = new FileReader();
+        const imageFile = e.target.files;
+
+        reader.readAsDataURL(imageFile[0]);
+        reader.onloadend =  () => {
+            // this.props.localParticipant.loadableAvatarUrl = reader.result;
+
+            APP.store.dispatch(setLoadableAvatarUrl(this.props.localParticipant.id, reader.result));
+            logger.info('Image loaded');
+        };
+
+        reader.onerror = () => {
+            logger.error('Failed to load image');
+        };
+    }
+
     /**
-     * Implements React's {@link Component#render()}.
+     * Returns a React Element providing avatar preview and upload avatar functionality
      *
-     * @inheritdoc
+     * @private
      * @returns {ReactElement}
      */
+
+    _renderAvatarComponents() {
+        const {
+            t,
+            localParticipant
+        } = this.props;
+
+        return (
+            <div className='profile-avatar'>
+                <div className= ''>
+                    <Avatar
+                        participantId = { localParticipant.id }
+                        url ={ localParticipant.loadableAvatarUrl }
+                    />
+                </div>
+                <Button
+                    appearance = 'primary'
+                    id = 'upload-avatar'
+                    onClick = {this._onUploadAvatarButtonClicked}
+                    type = 'button'>
+                    //TODO add translation
+                    {t('toolbar.logout')}
+                </Button>
+                <input
+                    accept = 'image/*'
+                    className = 'file-upload-btn'
+                    id = 'file-upload'
+                    onChange={this._onUploadAvatarChanged}
+                    ref = {this.uploadImageButton}
+                    type = 'file' />
+            </div>);
+    }
+
     render() {
         const {
             authEnabled,
@@ -148,6 +217,7 @@ class ProfileTab extends AbstractDialogTab<Props> {
                             value = { email } />
                     </div>
                 </div>
+                {this._renderAvatarComponents()}
                 { authEnabled && this._renderAuth() }
             </div>
         );
@@ -209,4 +279,10 @@ class ProfileTab extends AbstractDialogTab<Props> {
     }
 }
 
-export default translate(ProfileTab);
+function _mapStateToProps(state) {
+    return {
+        localParticipant: state['features/base/participants'].local
+    };
+}
+
+export default translate(connect(_mapStateToProps)(ProfileTab));
