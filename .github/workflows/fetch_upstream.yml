@@ -1,7 +1,8 @@
 name: fetch-upstream
 on:
-    schedule:
-        - cron: '* 0/6 * * MON-FRI'
+    push:
+#    schedule:
+#        - cron: '* 0/6 * * MON-FRI'
 jobs:
     fetch-upstream:
         runs-on: ubuntu-latest
