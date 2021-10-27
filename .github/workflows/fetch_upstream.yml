@@ -1,18 +1,18 @@
 name: fetch-upstream
 on:
     schedule:
-    -cron: '* 0/6 * * MON-FRI'
+        -cron: '* 0/6 * * MON-FRI'
 jobs:
-  fetch-upstream:
-    runs-on: ubuntu-latest
-    steps:
-    # REQUIRED step
-    # Step 1: run a standard checkout action, provided by github
-    - name: Checkout target repo
-      uses: actions/checkout@v2
-      with:
-        # optional: set the branch to checkout,
-        # sync action checks out your 'target_sync_branch' anyway
-        ref:  my-branch
-        # REQUIRED if your upstream repo is private (see wiki)
-        persist-credentials: false
+    fetch-upstream:
+        runs-on: ubuntu-latest
+        steps:
+            # REQUIRED step
+            # Step 1: run a standard checkout action, provided by github
+            -   name: Checkout target repo
+                uses: actions/checkout@v2
+                with:
+                    # optional: set the branch to checkout,
+                    # sync action checks out your 'target_sync_branch' anyway
+                    ref: my-branch
+                    # REQUIRED if your upstream repo is private (see wiki)
+                    persist-credentials: false
