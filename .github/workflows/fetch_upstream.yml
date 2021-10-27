@@ -1,4 +1,4 @@
-name: fetch-upstream-scheduled
+name: fetch-upstream
 on:
     schedule:
         -cron: '* 0/6 * * MON-FRI'
@@ -6,10 +6,13 @@ jobs:
   fetch-upstream:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Fetch Upstream
-      uses: bdougie/fetch-upstream@master
+    # REQUIRED step
+    # Step 1: run a standard checkout action, provided by github
+    - name: Checkout target repo
+      uses: actions/checkout@v2
       with:
-        upstream: jitsi/${GITHUB_REPOSITORY#*/}
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # optional: set the branch to checkout,
+        # sync action checks out your 'target_sync_branch' anyway
+        ref:  my-branch
+        # REQUIRED if your upstream repo is private (see wiki)
+        persist-credentials: false
