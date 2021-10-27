@@ -1,0 +1,15 @@
+name: fetch-upstream-scheduled
+on:
+    schedule:
+    -cron: '* 0/6 * * MON-FRI'
+jobs:
+  fetch-upstream:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Fetch Upstream
+      uses: bdougie/fetch-upstream@master
+      with:
+        upstream: jitsi/${GITHUB_REPOSITORY#*/}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
