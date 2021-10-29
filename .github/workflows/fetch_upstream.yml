@@ -7,6 +7,19 @@ jobs:
     fetch-upstream:
         runs-on: ubuntu-latest
         steps:
+            -   name: Checkout target master branch
+                uses: actions/checkout@v2
+                with:
+                    ref: master
+                    fetch-depth: 0
+            -   name: Sync upstream changes
+                id: sync
+                uses: aormsby/Fork-Sync-With-Upstream-action@v3.1
+                with:
+                    target_sync_branch: master
+                    target_repo_token: ${{ secrets.GITHUB_TOKEN }}
+                    upstream_sync_branch: master
+                    upstream_sync_repo: jitsi/jitsi-meet
             -   name: Checkout target worlerp/master branch
                 uses: actions/checkout@v2
                 with:
