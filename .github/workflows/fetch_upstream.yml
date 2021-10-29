@@ -8,13 +8,12 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             -   name: Checkout target master branch
-                uses: actions/checkout@v2
+            -   uses: actions/checkout@v2
                 with:
                     ref: worlderp/master
                     persist-credentials: false
             #     Set global environment variables:
             -   name: Set global env
-                uses: actions/checkout@v2
                 id: global_env
                 run: |
                     localReleaseVersion=$(git describe --tags --abbrev=0 | grep stable | cut -d '_' -f 2)
