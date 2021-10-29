@@ -18,7 +18,7 @@ jobs:
                 run: |
                     git fetch
                     localReleaseVersion=$(git tag -l | awk -F "_" '/stable/{print $2}' | sort -nr | head -1)
-                    upstreamReleaseVersion=$(git ls-remote --refs https://github.com/jitsi/jitsi-meet  | awk -F "_" '/stable/{print $2}' | cut -d '_' -f 2 | sort -nr | head -1)
+                    upstreamReleaseVersion=$(git ls-remote --refs https://github.com/jitsi/jitsi-meet  | awk -F "_" '/stable/{print $2}' | sort -nr | head -1)
                     echo "::set-output name=LOCAL_RELEASE::$localReleaseVersion"
                     echo "::set-output name=UPSTREAM_RELEASE::$upstreamReleaseVersion"
                     echo "${upstreamReleaseVersion}"

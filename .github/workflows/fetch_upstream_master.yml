@@ -1,4 +1,4 @@
-name: fetch-upstream
+name: fetch-upstream-master
 on:
     schedule:
         -   cron: '* 0/6 * * MON-FRI'
