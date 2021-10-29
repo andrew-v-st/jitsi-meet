@@ -16,12 +16,11 @@ jobs:
             -   name: Set global env
                 id: global_env
                 run: |
-                    localReleaseVersion=$(git describe --tags --abbrev=0 | grep stable)
+                    localReleaseVersion=$(git tag -l | awk -F "_" '/stable/{print $2}' | sort -nr | head -1)
                     upstreamReleaseVersion=$(git ls-remote --refs https://github.com/jitsi/jitsi-meet  | grep stable | cut -d '_' -f 2 | sort -nr | head -1)
                     echo "::set-output name=LOCAL_RELEASE::$localReleaseVersion"
                     echo "::set-output name=UPSTREAM_RELEASE::$upstreamReleaseVersion"
                     echo "${localReleaseVersion}"
-                    echo "${upstreamReleaseVersion}"
 
 #git tag -l | grep stable | cut -d '_' -f 2 | sort -nr | head -1
 #git ls-remote --refs https://github.com/jitsi/jitsi-meet  | grep stable | cut -d '_' -f 2 | sort -nr | head -1
