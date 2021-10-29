@@ -7,16 +7,20 @@ jobs:
     fetch-upstream:
         runs-on: ubuntu-latest
         steps:
-            # REQUIRED step
-            # Step 1: run a standard checkout action, provided by github
-            -   name: Checkout target repo
+            -   name: Checkout target master branch
                 uses: actions/checkout@v2
                 with:
-                    # optional: set the branch to checkout,
-                    # sync action checks out your 'target_sync_branch' anyway
-                    ref: my-branch
-                    # REQUIRED if your upstream repo is private (see wiki)
+                    ref: worlderp/master
                     persist-credentials: false
+            #     Set global environment variables:
+            -   name: Set global env
+                id: global_env
+                run: |
+                    localReleaseVersion=$(git describe --tags --abbrev=0 | grep stable | cut -d '_' -f 2)
+                    upstreamReleaseVersion =$(git ls-remote --refs https://github.com/jitsi/jitsi-meet  | grep stable | cut -d '_' -f 2 | sort -nr | head -1)
+                    echo "::set-output name=LOCAL_RELEASE::localReleaseVersion"
+                    echo "::set-output name=UPSTREAM_RELEASE::$upstreamReleaseVersion"
+#                    echo "::set-output name=DOCKER_IMAGE_WITH_VERSION::docker.pkg.github.com/${GITHUB_REPOSITORY}/${GITHUB_REPOSITORY#*/}:$containerVersion"
 
 #git tag -l | grep stable | cut -d '_' -f 2 | sort -nr | head -1
 #git ls-remote --refs https://github.com/jitsi/jitsi-meet  | grep stable | cut -d '_' -f 2 | sort -nr | head -1
