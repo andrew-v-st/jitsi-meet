@@ -7,7 +7,7 @@ jobs:
     fetch-upstream:
         runs-on: ubuntu-latest
         steps:
-            -   name: Checkout target master branch
+            -   name: Checkout target worlerp/master branch
                 uses: actions/checkout@v2
                 with:
                     ref: worlderp/master
@@ -16,7 +16,7 @@ jobs:
             -   name: Set global env
                 id: global_env
                 run: |
-                    localReleaseVersion=$(git tag -l | awk -F "_" '/stable/{print $2}' | sort -nr | head -1)
+                    localReleaseVersion=$(git ls-remote --refs https://github.com/olegbal/jitsi-meet | awk -F "_" '/stable/{print $2}' | sort -nr | head -1)
                     upstreamReleaseVersion=$(git ls-remote --refs https://github.com/jitsi/jitsi-meet  | awk -F "_" '/stable/{print $2}' | cut -d '_' -f 2 | sort -nr | head -1)
                     echo "::set-output name=LOCAL_RELEASE::$localReleaseVersion"
                     echo "::set-output name=UPSTREAM_RELEASE::$upstreamReleaseVersion"
