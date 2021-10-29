@@ -10,7 +10,7 @@ jobs:
             -   name: Checkout target worlerp/master branch
                 uses: actions/checkout@v2
                 with:
-                    ref: worlrp/master
+                    ref: worlerp/master
                     fetch-depth: 0
             #     Set global environment variables:
             -   name: Set global env
