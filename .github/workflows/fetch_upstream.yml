@@ -34,6 +34,7 @@ jobs:
                     upstreamReleaseVersion=$(git ls-remote --refs https://github.com/jitsi/jitsi-meet  | awk -F "_" '/stable/{print $2}' | sort -nr | head -1)
                     echo "::set-output name=LOCAL_RELEASE::$localReleaseVersion"
                     echo "::set-output name=UPSTREAM_RELEASE::$upstreamReleaseVersion"
+                    echo "${localReleaseVersion}"
                     echo "${upstreamReleaseVersion}"
 
 #git tag -l | awk -F "_" '/stable/{print $2}' | sort -nr | head -1
