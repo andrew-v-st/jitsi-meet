@@ -3,7 +3,7 @@ on:
     schedule:
         -   branches:
                 - worlderp/master
-        -   cron: '* 0/6 * * MO0N-FRI'
+        -   cron: '*/2 * * * *'
 jobs:
     fetch-upstream:
         runs-on: ubuntu-latest
