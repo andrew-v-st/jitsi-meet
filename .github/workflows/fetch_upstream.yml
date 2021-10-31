@@ -13,6 +13,8 @@ jobs:
                 id: global_env
                 run: |
                     echo "::set-output name=TARGET_BRANCH::worlderp/master"
+            -   name: Checkout target repo
+                uses: actions/checkout@v2
             -   name: Sync upstream changes
                 id: sync
                 uses: aormsby/Fork-Sync-With-Upstream-action@v3.1
