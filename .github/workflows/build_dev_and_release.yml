@@ -24,6 +24,7 @@ jobs:
                     node-version: '14'
             -   name: Build
                 run: |
+                    sudo apt install debhelper
                     npm install
                     make
                     dpkg-buildpackage -A -rfakeroot -us -uc -tc
