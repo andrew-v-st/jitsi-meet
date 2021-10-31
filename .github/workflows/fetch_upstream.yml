@@ -33,12 +33,12 @@ jobs:
             -   name: Checkout target worlerp/master branch
                 uses: actions/checkout@v2
                 with:
-                    ref: ${{ TARGET_BRANCH }}
+                    ref: ${{ steps.global_env.outputs.TARGET_BRANCH }}
                     fetch-depth: 0
             -   name: Merge latest release -> wolrderp/master
                 uses: devmasx/merge-branch@master
                 with:
                     type: now
-                    from_branch: ${{ RELEASE_BRANCH_NAME }}
-                    target_branch: ${{ TARGET_BRANCH }}
+                    from_branch: ${{ steps.global_env.outputs.RELEASE_BRANCH_NAME }}
+                    target_branch: ${{ steps.global_env.outputs.TARGET_BRANCH }}
                     github_token: ${{ secrets.GITHUB_TOKEN }}
