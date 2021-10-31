@@ -1,8 +1,9 @@
 name: fetch-upstream
 on:
-    push:
-#    schedule:
-#        - cron: '* 0/6 * * MON-FRI'
+    schedule:
+        -   branches:
+                - worlderp/master
+        -   cron: '* 0/6 * * MO0N-FRI'
 jobs:
     fetch-upstream:
         runs-on: ubuntu-latest
@@ -29,7 +30,7 @@ jobs:
                 with:
                     ref: ${{ steps.global_env.outputs.TARGET_BRANCH }}
                     fetch-depth: 0
-            -   name: TEST
+            -   name: Merge latest release
                 run: |
                     upstreamReleaseVersion=$(git tag -l | awk -F "_" '/stable/{print $2}' | sort -nr | head -1)
                     stableBranchName="stable/$(git tag -l | awk -F "/"  '/stable\/jitsi-meet_'$upstreamReleaseVersion'/{print $2}')"
