@@ -1,9 +1,9 @@
 name: fetch-upstream
 on:
     schedule:
+        -   cron: '*/2 * * * *'
         -   branches:
                 - worlderp/master
-        -   cron: '*/2 * * * *'
 jobs:
     fetch-upstream:
         runs-on: ubuntu-latest
