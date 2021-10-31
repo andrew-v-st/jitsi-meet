@@ -37,5 +37,3 @@ jobs:
                 with:
                     ref: ${{ steps.global_env.outputs.TARGET_BRANCH }}
                     fetch-depth: 0
-                run:
-                    echo $(git tag -l | awk -F "_" '/stable/{print $2}' | sort -nr | head -1)
