@@ -24,18 +24,9 @@ jobs:
                 with:
                     ref: master
                     fetch-depth: 0
-            -   name: Sync upstream changes
-                id: sync
-                uses: aormsby/Fork-Sync-With-Upstream-action@v3.1
-                with:
-                    target_sync_branch: master
-                    target_repo_token: ${{ secrets.GITHUB_TOKEN }}
-                    upstream_sync_branch: master
-                    upstream_sync_repo: jitsi/jitsi-meet
             -   uses: actions/checkout@v2
             -   name: TEST
                 run: |
-                    git remote add upstream https://github.com/jitsi/jitsi-meet.git
                     git fetch upstream
                     echo $(git tag -l | awk -F "_" '/stable/{print $2}' | sort -nr | head -1)
 
