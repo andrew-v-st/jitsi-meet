@@ -33,5 +33,7 @@ jobs:
                     git fetch upstream
                     upstreamReleaseVersion=$(git tag -l | awk -F "_" '/stable/{print $2}' | sort -nr | head -1)
                     stableBranchName="stable/$(git tag -l | awk -F "/"  '/stable\/jitsi-meet_'$upstreamReleaseVersion'/{print $4}')"
+                    echo $upstreamReleaseVersion
+                    echo $stableBranchName
                     git merge $stableBranchName
                     git push origin ${{ steps.global_env.outputs.TARGET_BRANCH }}
