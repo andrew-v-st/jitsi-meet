@@ -7,6 +7,16 @@ jobs:
     fetch-upstream:
         runs-on: ubuntu-latest
         steps:
+            #     Set global environment variables:
+            -   uses: actions/checkout@v2
+            -   name: Set global env
+                id: global_env
+                run: |
+                    upstreamReleaseVersion=$(git ls-remote --refs https://github.com/jitsi/jitsi-meet  | awk -F "_" '/stable/{print $2}' | sort -nr | head -1)
+                    stableBranchName="stable/$(git ls-remote --refs https://github.com/jitsi/jitsi-meet | awk -F "/"  '/stable\/jitsi-meet_'$upstreamReleaseVersion'/{print $4}')"
+                    echo "::set-output name=RELEASE_BRANCH_NAME::$stableBranchName"
+                    echo "::set-output name=UPSTREAM_RELEASE::$upstreamReleaseVersion"
+                    echo "::set-output name=TARGET_BRANCH::worlderp/master"
             -   name: Checkout target master branch
                 uses: actions/checkout@v2
                 with:
@@ -23,18 +33,12 @@ jobs:
             -   name: Checkout target worlerp/master branch
                 uses: actions/checkout@v2
                 with:
-                    ref: worlderp/master
+                    ref: ${{ TARGET_BRANCH }}
                     fetch-depth: 0
-            #     Set global environment variables:
-            -   name: Set global env
-                id: global_env
-                run: |
-                    upstreamReleaseVersion=$(git ls-remote --refs https://github.com/jitsi/jitsi-meet  | awk -F "_" '/stable/{print $2}' | sort -nr | head -1)
-                    stableBranchName="stable/$(git ls-remote --refs https://github.com/jitsi/jitsi-meet | awk -F "/"  '/stable\/jitsi-meet_'$upstreamReleaseVersion'/{print $4}')"
-                    echo "::set-output name=LOCAL_RELEASE::$localReleaseVersion"
-                    echo "::set-output name=UPSTREAM_RELEASE::$upstreamReleaseVersion"
-                    echo "${stableBranchName}"
-                    echo "${upstreamReleaseVersion}"
-
-#git tag -l | awk -F "_" '/stable/{print $2}' | sort -nr | head -1
-#git ls-remote --refs https://github.com/jitsi/jitsi-meet  | awk -F "_" '/stable/{print $2}' | sort -nr | head -1
+            -   name: Merge latest release -> wolrderp/master
+                uses: devmasx/merge-branch@master
+                with:
+                    type: now
+                    from_branch: ${{ RELEASE_BRANCH_NAME }}
+                    target_branch: ${{ TARGET_BRANCH }}
+                    github_token: ${{ secrets.GITHUB_TOKEN }}
