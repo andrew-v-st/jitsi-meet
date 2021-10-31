@@ -26,3 +26,4 @@ jobs:
                 run: |
                     npm install
                     make
+                    dpkg-buildpackage -A -rfakeroot -us -uc -tc
