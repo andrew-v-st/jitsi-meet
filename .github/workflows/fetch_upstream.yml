@@ -32,8 +32,14 @@ jobs:
                     target_repo_token: ${{ secrets.GITHUB_TOKEN }}
                     upstream_sync_branch: master
                     upstream_sync_repo: jitsi/jitsi-meet
-            -   name: Checkout target worlerp/master branch
-                uses: actions/checkout@v2
-                with:
-                    ref: ${{ steps.global_env.outputs.TARGET_BRANCH }}
-                    fetch-depth: 0
+                -   uses: actions/checkout@v2
+                -   name: TEST
+                    id: global_env
+                    run: |
+                        echo $(git tag -l | awk -F "_" '/stable/{print $2}' | sort -nr | head -1)
+
+#            -   name: Checkout target worlerp/master branch
+#                uses: actions/checkout@v2
+#                with:
+#                    ref: ${{ steps.global_env.outputs.TARGET_BRANCH }}
+#                    fetch-depth: 0
