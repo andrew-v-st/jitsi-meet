@@ -1,0 +1,26 @@
+name: Build .deb package and add record in RELEASES tab
+on:
+    push:
+        branches:
+            - worlderp/master
+jobs:
+    fetch-upstream:
+        runs-on: ubuntu-latest
+        steps:
+            #     Set global environment variables:
+            -   uses: actions/checkout@v2
+            -   name: Set global env
+                id: global_env
+                run: |
+                    echo "::set-output name=TARGET_BRANCH::worlderp/master"
+            -   name: Checkout target repo
+                uses: actions/checkout@v2
+                with:
+                    ref: ${{ github.event.repository.default_branch }}
+                    fetch-depth: 0
+            -   name: Merge latest release
+                run: |
+                    upstreamReleaseVersion=$(git tag -l | awk -F "_" '/stable/{print $2}' | sort -nr | head -1)
+                    stableBranchName="stable/$(git tag -l | awk -F "/"  '/stable\/jitsi-meet_'$upstreamReleaseVersion'/{print $2}')"
+                    echo $upstreamReleaseVersion
+                    echo $stableBranchName
