@@ -36,8 +36,8 @@ jobs:
                     echo $upstreamReleaseVersion
                     echo $stableBranchName
                     git merge $stableBranchName
-#            -   name: Push changes
-#                uses: ad-m/github-push-action@master
-#                with:
-#                    github_token: ${{ secrets.GITHUB_TOKEN }}
-#                    branch: ${{ steps.global_env.outputs.TARGET_BRANCH }}
+            -   name: Push changes
+                uses: ad-m/github-push-action@master
+                with:
+                    github_token: ${{ secrets.GITHUB_TOKEN }}
+                    branch: ${{ steps.global_env.outputs.TARGET_BRANCH }}
