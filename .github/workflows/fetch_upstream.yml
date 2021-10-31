@@ -27,10 +27,10 @@ jobs:
                     upstream_sync_branch: master
                     upstream_sync_repo: jitsi/jitsi-meet
 
-#            -   name: New commits found
-#                if: steps.sync.outputs.has_new_commits == 'true'
-#                run: |
-#                echo "New commits were found to sync."
+            -   name: New commits found
+                if: steps.sync.outputs.has_new_commits == 'true'
+                run: |
+                echo "New commits were found to sync."
             -   uses: actions/checkout@v2
             -   name: TEST
                 run: |
@@ -41,8 +41,8 @@ jobs:
                     echo $upstreamReleaseVersion
                     echo $stableBranchName
                     git merge $stableBranchName
-            -   name: Push changes
-                uses: ad-m/github-push-action@master
-                with:
-                    github_token: ${{ secrets.GITHUB_TOKEN }}
-                    branch: ${{ steps.global_env.outputs.TARGET_BRANCH }}
+#            - name: Push changes
+#              uses: ad-m/github-push-action@master
+#              with:
+#                  github_token: ${{ secrets.GITHUB_TOKEN }}
+#                  branch: ${{ steps.global_env.outputs.TARGET_BRANCH }}
