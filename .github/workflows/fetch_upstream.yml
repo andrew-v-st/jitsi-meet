@@ -31,14 +31,13 @@ jobs:
                     fetch-depth: 0
             -   name: TEST
                 run: |
-                    git fetch upstream
                     upstreamReleaseVersion=$(git tag -l | awk -F "_" '/stable/{print $2}' | sort -nr | head -1)
                     stableBranchName="stable/$(git tag -l | awk -F "/"  '/stable\/jitsi-meet_'$upstreamReleaseVersion'/{print $2}')"
                     echo $upstreamReleaseVersion
                     echo $stableBranchName
                     git merge $stableBranchName
-            -   name: Push changes
-                uses: ad-m/github-push-action@master
-                with:
-                    github_token: ${{ secrets.GITHUB_TOKEN }}
-                    branch: ${{ steps.global_env.outputs.TARGET_BRANCH }}
+#            -   name: Push changes
+#                uses: ad-m/github-push-action@master
+#                with:
+#                    github_token: ${{ secrets.GITHUB_TOKEN }}
+#                    branch: ${{ steps.global_env.outputs.TARGET_BRANCH }}
