@@ -1,7 +1,7 @@
 name: fetch-upstream
 on:
     schedule:
-        -   cron: '*/2 * * * *'
+        -   cron: '* * * * *'
         -   branches:
                 - worlderp/master
 jobs:
