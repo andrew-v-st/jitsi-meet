@@ -32,6 +32,7 @@ jobs:
                     args: -A -rfakeroot -us -uc -tc
 
             -   name: test
+                if: always()
                 run: |
                     echo ${{ steps.build.outputs.filename }}
                     echo ${{ steps.build.outputs.filename-dbgsym }}
