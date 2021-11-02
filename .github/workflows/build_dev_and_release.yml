@@ -32,7 +32,6 @@ jobs:
                     args: -A -rfakeroot -us -uc
 
             -   name: test
-                uses: actions/setup-node@v2
                 run: |
                     echo ${{ steps.build.outputs.filename }}
                     echo ${{ steps.build.outputs.filename-dbgsym }}
