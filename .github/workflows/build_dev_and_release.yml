@@ -26,7 +26,7 @@ jobs:
                     npm install
                     make
             -   name: Package .deb
-                uses: olegbal/build-dpkg-buster@v1
+                uses: singingwolfboy/build-dpkg-buster@v1
                 id: build_dpkg
                 with:
                     args: -A -rfakeroot -us -uc -tc
