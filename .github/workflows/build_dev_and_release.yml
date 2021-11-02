@@ -4,7 +4,7 @@ on:
         branches:
             - worlderp/master
 jobs:
-    fetch-upstream:
+    build-release:
         runs-on: ubuntu-latest
         steps:
             #     Set global environment variables:
