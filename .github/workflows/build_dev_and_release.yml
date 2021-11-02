@@ -8,15 +8,20 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             #     Set global environment variables:
-            -   uses: actions/checkout@v2
-            -   name: Set global env
-                id: global_env
-                run: |
-                    echo "::set-output name=TARGET_BRANCH::worlderp/master"
             -   name: Checkout target repo
                 uses: actions/checkout@v2
                 with:
                     ref: ${{ github.event.repository.default_branch }}
+                    fetch-depth: 0
+            -   name: Set global env
+                id: global_env
+                run: |
+                    releaseVersion=$(git tag -l | awk -F "_" '/stable/{print $2}' | sort -nr | head -1)
+                    releaseFullName="stable/$(git tag -l | awk -F "/"  '/stable\/jitsi-meet_'$releaseVersion'/{print $2}')"
+                    echo "::set-output name=TARGET_BRANCH::worlderp/master"
+                    echo "::set-output name=PACKAGE_NAME::jitsi-meet-web_$releaseVersion.deb"
+                    echo "::set-output name=RELEASE_VERSION_PART::$releaseVersion"
+                    echo "::set-output name=RELEASE_FULL_NAME::$releaseFullName"
             -   name: Install node
                 uses: actions/setup-node@v2
                 with:
@@ -26,13 +31,14 @@ jobs:
                     npm install
                     make
             -   name: Package .deb
-                uses: singingwolfboy/build-dpkg-stretch@v1
+                uses: olegbal/build-dpkg-buster@master
                 id: build_dpkg
                 with:
-                    args: -A -rfakeroot -us -uc -tc
-
-            -   name: test
-                if: always()
-                run: |
-                    echo ${{ steps.build.outputs.filename }}
-                    echo ${{ steps.build.outputs.filename-dbgsym }}
+                    version: ${{ steps.global_env.outputs.RELEASE_VERSION_PART }}
+                    build-args: -A -rfakeroot -us -uc -tc
+            -   name: Release
+                uses: softprops/action-gh-release@v1
+                with:
+                    tag_name: ${{ steps.global_env.outputs.RELEASE_FULL_NAME }}
+                    files: |
+                        ${{ steps.global_env.outputs.PACKAGE_NAME }}
