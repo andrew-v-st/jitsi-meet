@@ -39,5 +39,5 @@ jobs:
             -   name: Push changes
                 uses: ad-m/github-push-action@master
                 with:
-                    github_token: ${{ secrets.SOME_SECRET }}
-                    branch: ${{ steps.global_env.outputs.GITHUB_TOKEN }}
+                    github_token: ${{ secrets.GITHUB_TOKEN }}
+                    branch: ${{ steps.global_env.outputs.TARGET_BRANCH }}
