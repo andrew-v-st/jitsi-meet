@@ -21,7 +21,7 @@ jobs:
                 uses: aormsby/Fork-Sync-With-Upstream-action@v3.1
                 with:
                     target_sync_branch: master
-                    target_repo_token: ${{ secrets.GITHUB_TOKEN }}
+                    target_repo_token: ${{ secrets.SOME_SECRET }}
                     upstream_sync_branch: master
                     upstream_sync_repo: jitsi/jitsi-meet
             -   uses: actions/checkout@v2
@@ -38,5 +38,5 @@ jobs:
             -   name: Push changes
                 uses: ad-m/github-push-action@master
                 with:
-                    github_token: ${{ secrets.GITHUB_TOKEN }}
+                    github_token: ${{ secrets.SOME_SECRET }}
                     branch: ${{ steps.global_env.outputs.TARGET_BRANCH }}
