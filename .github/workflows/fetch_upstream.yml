@@ -1,5 +1,6 @@
 name: fetch-upstream
 on:
+    workflow_dispatch:
     schedule:
         -   cron: '0 9,13,16 * * MON-FRI'
 jobs:
