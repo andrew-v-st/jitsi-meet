@@ -1,7 +1,7 @@
 PODS:
-  - Amplitude (8.2.0)
-  - amplitude-react-native (2.3.3):
-    - Amplitude (= 8.2.0)
+  - Amplitude (8.7.1)
+  - amplitude-react-native (2.7.0):
+    - Amplitude (= 8.7.1)
     - React-Core
   - AppAuth (1.4.0):
     - AppAuth/Core (= 1.4.0)
@@ -83,8 +83,8 @@ PODS:
     - nanopb (~> 1.30906.0)
   - GoogleDataTransport (7.5.1):
     - nanopb (~> 1.30906.0)
-  - GoogleSignIn (5.0.2):
-    - AppAuth (~> 1.2)
+  - GoogleSignIn (6.0.2):
+    - AppAuth (~> 1.4)
     - GTMAppAuth (~> 1.0)
     - GTMSessionFetcher/Core (~> 1.1)
   - GoogleUtilities/AppDelegateSwizzler (6.7.2):
@@ -109,7 +109,7 @@ PODS:
   - GTMAppAuth (1.2.2):
     - AppAuth/Core (~> 1.4)
     - GTMSessionFetcher/Core (~> 1.5)
-  - GTMSessionFetcher/Core (1.6.1)
+  - GTMSessionFetcher/Core (1.7.0)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
     - nanopb/encode (= 1.30906.0)
@@ -280,28 +280,30 @@ PODS:
     - React-cxxreact (= 0.61.5-jitsi.2)
     - React-jsi (= 0.61.5-jitsi.2)
   - React-jsinspector (0.61.5-jitsi.2)
-  - react-native-background-timer (2.4.0):
-    - React
-  - react-native-calendar-events (2.0.0):
-    - React
+  - react-native-background-timer (2.4.1):
+    - React-Core
+  - react-native-get-random-values (1.7.2):
+    - React-Core
   - react-native-keep-awake (4.0.0):
     - React
-  - react-native-netinfo (4.1.5):
-    - React
-  - react-native-performance (2.0.0):
+  - react-native-netinfo (7.1.7):
     - React-Core
-  - react-native-slider (3.0.3):
-    - React
-  - react-native-splash-screen (3.2.0):
-    - React
-  - react-native-video (5.1.1):
+  - react-native-performance (2.1.0):
     - React-Core
-    - react-native-video/Video (= 5.1.1)
-  - react-native-video/Video (5.1.1):
+  - react-native-safe-area-context (3.3.2):
     - React-Core
-  - react-native-webrtc (1.92.2):
+  - react-native-slider (4.1.12):
     - React-Core
-  - react-native-webview (11.0.2):
+  - react-native-splash-screen (3.3.0):
+    - React-Core
+  - react-native-video (5.2.0):
+    - React-Core
+    - react-native-video/Video (= 5.2.0)
+  - react-native-video/Video (5.2.0):
+    - React-Core
+  - react-native-webrtc (1.94.1):
+    - React-Core
+  - react-native-webview (11.15.0):
     - React-Core
   - React-RCTActionSheet (0.61.5-jitsi.2):
     - React-Core/RCTActionSheetHeaders (= 0.61.5-jitsi.2)
@@ -357,23 +359,35 @@ PODS:
     - React-jsi (= 0.61.5-jitsi.2)
     - ReactCommon/jscallinvoker (= 0.61.5-jitsi.2)
     - ReactCommon/turbomodule/core (= 0.61.5-jitsi.2)
-  - RNCAsyncStorage (1.15.5):
+  - RNCalendarEvents (2.2.0):
+    - React
+  - RNCAsyncStorage (1.15.14):
     - React-Core
-  - RNDefaultPreference (1.4.2):
-    - React
-  - RNDeviceInfo (8.0.0):
+  - RNCClipboard (1.5.1):
     - React-Core
-  - RNGoogleSignin (3.0.1):
-    - GoogleSignIn (~> 5.0.0)
-    - React
-  - RNSound (0.11.0):
-    - React
-    - RNSound/Core (= 0.11.0)
-  - RNSound/Core (0.11.0):
-    - React
+  - RNCMaskedView (0.2.6):
+    - React-Core
+  - RNDefaultPreference (1.4.3):
+    - React-Core
+  - RNDeviceInfo (8.4.8):
+    - React-Core
+  - RNGestureHandler (1.10.3):
+    - React-Core
+  - RNGoogleSignin (7.0.4):
+    - GoogleSignIn (~> 6.0.0)
+    - React-Core
+  - RNReanimated (1.13.3):
+    - React-Core
+  - RNScreens (2.18.1):
+    - React-Core
+  - RNSound (0.11.1):
+    - React-Core
+    - RNSound/Core (= 0.11.1)
+  - RNSound/Core (0.11.1):
+    - React-Core
   - RNSVG (12.1.0):
     - React
-  - RNWatch (0.4.3):
+  - RNWatch (1.0.4):
     - React
   - Yoga (1.14.0)
 
@@ -401,10 +415,11 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - react-native-background-timer (from `../node_modules/react-native-background-timer`)
-  - react-native-calendar-events (from `../node_modules/react-native-calendar-events`)
+  - react-native-get-random-values (from `../node_modules/react-native-get-random-values`)
   - react-native-keep-awake (from `../node_modules/react-native-keep-awake`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-performance (from `../node_modules/react-native-performance/ios`)
+  - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - "react-native-slider (from `../node_modules/@react-native-community/slider`)"
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - react-native-video (from `../node_modules/react-native-video/react-native-video.podspec`)
@@ -420,10 +435,16 @@ DEPENDENCIES:
   - React-RCTText (from `../node_modules/react-native/Libraries/Text`)
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - ReactCommon/turbomodule (from `../node_modules/react-native/ReactCommon`)
+  - RNCalendarEvents (from `../node_modules/react-native-calendar-events`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
+  - "RNCClipboard (from `../node_modules/@react-native-community/clipboard`)"
+  - "RNCMaskedView (from `../node_modules/@react-native-masked-view/masked-view`)"
   - RNDefaultPreference (from `../node_modules/react-native-default-preference`)
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
-  - "RNGoogleSignin (from `../node_modules/@react-native-community/google-signin`)"
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - "RNGoogleSignin (from `../node_modules/@react-native-google-signin/google-signin`)"
+  - RNReanimated (from `../node_modules/react-native-reanimated`)
+  - RNScreens (from `../node_modules/react-native-screens`)
   - RNSound (from `../node_modules/react-native-sound`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - RNWatch (from `../node_modules/react-native-watch-connectivity`)
@@ -485,14 +506,16 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   react-native-background-timer:
     :path: "../node_modules/react-native-background-timer"
-  react-native-calendar-events:
-    :path: "../node_modules/react-native-calendar-events"
+  react-native-get-random-values:
+    :path: "../node_modules/react-native-get-random-values"
   react-native-keep-awake:
     :path: "../node_modules/react-native-keep-awake"
   react-native-netinfo:
     :path: "../node_modules/@react-native-community/netinfo"
   react-native-performance:
     :path: "../node_modules/react-native-performance/ios"
+  react-native-safe-area-context:
+    :path: "../node_modules/react-native-safe-area-context"
   react-native-slider:
     :path: "../node_modules/@react-native-community/slider"
   react-native-splash-screen:
@@ -523,14 +546,26 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/Libraries/Vibration"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNCalendarEvents:
+    :path: "../node_modules/react-native-calendar-events"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
+  RNCClipboard:
+    :path: "../node_modules/@react-native-community/clipboard"
+  RNCMaskedView:
+    :path: "../node_modules/@react-native-masked-view/masked-view"
   RNDefaultPreference:
     :path: "../node_modules/react-native-default-preference"
   RNDeviceInfo:
     :path: "../node_modules/react-native-device-info"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
   RNGoogleSignin:
-    :path: "../node_modules/@react-native-community/google-signin"
+    :path: "../node_modules/@react-native-google-signin/google-signin"
+  RNReanimated:
+    :path: "../node_modules/react-native-reanimated"
+  RNScreens:
+    :path: "../node_modules/react-native-screens"
   RNSound:
     :path: "../node_modules/react-native-sound"
   RNSVG:
@@ -541,8 +576,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  Amplitude: 263118b9e691e73a1c864b05bb08a3aff3636d16
-  amplitude-react-native: 833a4bd7f656f826bda1de01a7b8593b58842209
+  Amplitude: 834c7332dfb9640a751e21c13efb22a07c0c12d4
+  amplitude-react-native: 0ed8cab759aafaa94961b82122bf56297da607ad
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   CocoaLumberjack: 2f44e60eb91c176d471fdba43b9e3eae6a721947
@@ -560,10 +595,10 @@ SPEC CHECKSUMS:
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
   GoogleAppMeasurement: 966e88df9d19c15715137bb2ddaf52373f111436
   GoogleDataTransport: f56af7caa4ed338dc8e138a5d7c5973e66440833
-  GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
+  GoogleSignIn: fd381840dbe7c1137aa6dc30849a5c3e070c034a
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
   GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
-  GTMSessionFetcher: 36689134877faeb055b27dfa4ccc9ceaa42e029e
+  GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   ObjectiveDropboxOfficial: b4765572e334d6fc6214b43a7595510324bbbbaa
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
@@ -576,16 +611,17 @@ SPEC CHECKSUMS:
   React-jsi: ddb471a56185e4007835a1bba0882ecb5ce3dc0e
   React-jsiexecutor: 67106691c60030ec888d7cbbc4f48a3168e27a02
   React-jsinspector: 92ceee6c66dc19886289b52436ade7e020b89602
-  react-native-background-timer: e0384ea2fa5a98f67f84f9c4dc274260ddd674ed
-  react-native-calendar-events: 1442fad71a00388f933cfa25512588fec300fcf8
-  react-native-keep-awake: eba3137546b10003361b37c761f6c429b59814ae
-  react-native-netinfo: 8d8db463bcc5db66a8ac5c48a7d86beb3b92f61a
-  react-native-performance: 8edfa2bbc9a2af4a02f01d342118e413a95145e0
-  react-native-slider: b733e17fdd31186707146debf1f04b5d94aa1a93
-  react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
-  react-native-video: 1574074179ecaf6a9dd067116c8f31bf9fec15c8
-  react-native-webrtc: 41526e4060dac373c18676f866962d4180ee47b9
-  react-native-webview: b2542d6fd424bcc3e3b2ec5f854f0abb4ec86c87
+  react-native-background-timer: 17ea5e06803401a379ebf1f20505b793ac44d0fe
+  react-native-get-random-values: 30b3f74ca34e30e2e480de48e4add2706a40ac8f
+  react-native-keep-awake: afad8a51dfef9fe9655a6344771be32c8596d774
+  react-native-netinfo: 27f287f2d191693f3b9d01a4273137fcf91c3b5d
+  react-native-performance: f4b6604a9d5a8a7407e34a82fab6c641d9a3ec12
+  react-native-safe-area-context: 584dc04881deb49474363f3be89e4ca0e854c057
+  react-native-slider: 6e9b86e76cce4b9e35b3403193a6432ed07e0c81
+  react-native-splash-screen: 4312f786b13a81b5169ef346d76d33bc0c6dc457
+  react-native-video: a4c2635d0802f983594b7057e1bce8f442f0ad28
+  react-native-webrtc: 2f20515f3ebb9dbf1f2aad638cc7573396cf948f
+  react-native-webview: e89bf2dba26a04cda967814df3ed1be99f291233
   React-RCTActionSheet: bcbc311dc3b47bc8efb2737ff0940239a45789a9
   React-RCTAnimation: 65f61080ce632f6dea23d52e354ffac9948396c6
   React-RCTBlob: 70d88f7b68b5c44953cdb286ac2e36a7a509a97e
@@ -596,15 +632,21 @@ SPEC CHECKSUMS:
   React-RCTText: 4f1b99f228278d2a5e9008eced8dc9c974c4a270
   React-RCTVibration: c1041024893fdfdb8371e7c720c437751b711676
   ReactCommon: 18014e1d98dbeb9141e935cfe35fc93bd511ffb6
-  RNCAsyncStorage: 8324611026e8dc3706f829953aa6e3899f581589
-  RNDefaultPreference: 56a405ce61033ac77b95004dccd7ac54c2eb50d1
-  RNDeviceInfo: 72ded653ce636b3f03571e90bed99309a714944e
-  RNGoogleSignin: 39336070b35fc4cea6a98cf111e00480317be0ae
-  RNSound: c980916b596cc15c8dcd2f6ecd3b13c4881dbe20
+  RNCalendarEvents: 7e65eb4a94f53c1744d1e275f7fafcfaa619f7a3
+  RNCAsyncStorage: ea6b5c280997b2b32a587793163b1f10e580c4f7
+  RNCClipboard: 41d8d918092ae8e676f18adada19104fa3e68495
+  RNCMaskedView: c298b644a10c0c142055b3ae24d83879ecb13ccd
+  RNDefaultPreference: 326860d42a681bfd7338c8f6d061cf58745bd860
+  RNDeviceInfo: 0400a6d0c94186d1120c3cbd97b23abc022187a9
+  RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
+  RNGoogleSignin: c4381751eefd73c552b923ba347a9bfc6f18771c
+  RNReanimated: 514a11da3a2bcc6c3dfd9de32b38e2b9bf101926
+  RNScreens: f7ad633b2e0190b77b6a7aab7f914fad6f198d8d
+  RNSound: 27e8268bdb0a1f191f219a33267f7e0445e8d62f
   RNSVG: ce9d996113475209013317e48b05c21ee988d42e
-  RNWatch: a5320c959c75e72845c07985f3e935e58998f1d3
+  RNWatch: 99637948ec9b5c9ec5a41920642594ad5ba07e80
   Yoga: 96b469c5e81ff51b917b92e8c3390642d4ded30c
 
-PODFILE CHECKSUM: 3cc305fd6ee83fff506c10c4805471fa72b61c9a
+PODFILE CHECKSUM: 2e6a49cec4d0e9eb135654df2dddb3448d26cb4a
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2

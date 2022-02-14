@@ -1,3 +1,4 @@
+import { MD_ITEM_HEIGHT } from '../../../base/dialog/components/native/styles';
 import BaseTheme from '../../../base/ui/components/BaseTheme.native';
 
 /**
@@ -139,7 +140,11 @@ export default {
     participantDetailsContainer: {
         display: 'flex',
         flexDirection: 'column',
-        width: '100%'
+        width: '73%'
+    },
+
+    participantDetailsContainerRaisedHand: {
+        width: '65%'
     },
 
     participantNameContainer: {
@@ -162,14 +167,10 @@ export default {
         paddingTop: BaseTheme.spacing[1]
     },
 
-    isLocal: {
-        alignSelf: 'center',
-        color: BaseTheme.palette.text01,
-        marginLeft: 4
-    },
-
     participantsPane: {
-        backgroundColor: BaseTheme.palette.ui01
+        backgroundColor: BaseTheme.palette.ui01,
+        flex: 1,
+        justifyContent: 'center'
     },
 
     participantStatesContainer: {
@@ -187,22 +188,23 @@ export default {
         backgroundColor: BaseTheme.palette.warning02,
         borderRadius: BaseTheme.shape.borderRadius / 2,
         height: BaseTheme.spacing[4],
-        marginLeft: BaseTheme.spacing[2],
-        width: BaseTheme.spacing[4]
+        width: BaseTheme.spacing[4],
+        marginLeft: 'auto',
+        marginRight: BaseTheme.spacing[2]
     },
 
     raisedHandIcon: {
         ...flexContent,
-        top: BaseTheme.spacing[1]
+        top: BaseTheme.spacing[1],
+        color: BaseTheme.palette.uiBackground
     },
 
-    lobbyList: {
+    lobbyListContainer: {
         position: 'relative'
     },
 
-    meetingList: {
-        position: 'relative',
-        marginTop: BaseTheme.spacing[3]
+    lobbyListDescription: {
+        ...participantListDescription
     },
 
     lobbyListDetails: {
@@ -216,8 +218,8 @@ export default {
         width: '100%'
     },
 
-    lobbyListDescription: {
-        ...participantListDescription
+    meetingListContainer: {
+        flex: 1
     },
 
     meetingListDescription: {
@@ -227,27 +229,27 @@ export default {
 
     footer: {
         alignItems: 'center',
-        backgroundColor: BaseTheme.palette.ui01,
-        bottom: BaseTheme.spacing[0],
-        display: 'flex',
         flexDirection: 'row',
-        height: BaseTheme.spacing[10],
-        justifyContent: 'space-between',
-        paddingRight: BaseTheme.spacing[3],
-        position: 'relative',
-        right: BaseTheme.spacing[0],
-        left: BaseTheme.spacing[0]
+        paddingHorizontal: BaseTheme.spacing[3],
+        paddingVertical: BaseTheme.spacing[2]
+    },
+
+    headerCloseIcon: {
+        marginLeft: 12
     },
 
     inviteButton: {
         backgroundColor: BaseTheme.palette.action01,
-        marginTop: BaseTheme.spacing[2],
+        borderRadius: BaseTheme.shape.borderRadius,
+        height: BaseTheme.spacing[7],
+        marginBottom: BaseTheme.spacing[4],
         marginLeft: BaseTheme.spacing[3],
         marginRight: BaseTheme.spacing[3]
     },
 
     inviteLabel: {
-        ...BaseTheme.typography.labelButtonLarge,
+        fontSize: 15,
+        lineHeight: 30,
         textTransform: 'capitalize'
     },
 
@@ -322,5 +324,52 @@ export default {
 
     divider: {
         backgroundColor: BaseTheme.palette.dividerColor
+    },
+
+    clearableInput: {
+        display: 'flex',
+        height: MD_ITEM_HEIGHT,
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderColor: BaseTheme.palette.border02,
+        backgroundColor: BaseTheme.palette.uiBackground,
+        borderRadius: BaseTheme.shape.borderRadius,
+        marginLeft: BaseTheme.spacing[3],
+        marginRight: BaseTheme.spacing[3]
+    },
+
+    clearableInputFocus: {
+        borderWidth: 3,
+        borderColor: BaseTheme.palette.field01Focus
+    },
+
+    clearButton: {
+        backgroundColor: 'transparent',
+        borderWidth: 0,
+        position: 'absolute',
+        right: 0,
+        top: 0,
+        paddingTop: 12,
+        paddingLeft: BaseTheme.spacing[2],
+        width: 40,
+        height: MD_ITEM_HEIGHT
+    },
+
+    clearIcon: {
+        color: BaseTheme.palette.icon02
+    },
+
+    clearableInputTextInput: {
+        backgroundColor: 'transparent',
+        borderWidth: 0,
+        height: '100%',
+        width: '100%',
+        textAlign: 'center',
+        color: BaseTheme.palette.text01,
+        paddingTop: BaseTheme.spacing[2],
+        paddingBottom: BaseTheme.spacing[2],
+        paddingLeft: BaseTheme.spacing[3],
+        paddingRight: BaseTheme.spacing[3],
+        fontSize: 16
     }
 };
