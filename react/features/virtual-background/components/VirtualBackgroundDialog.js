@@ -184,6 +184,15 @@ const useStyles = makeStyles(theme => {
                 border: '2px solid #246fe5',
                 padding: '0 10px'
             },
+            '& .incognito': {
+                background: '#686060',
+                padding: '0 10px'
+            },
+            '& .incognito-selected': {
+                background: '#686060',
+                border: '2px solid #246fe5',
+                padding: '0 10px'
+            },
             '& delete-image-icon': {
                 background: '#3d3d3d',
                 position: 'absolute',
@@ -207,6 +216,7 @@ const useStyles = makeStyles(theme => {
                     '& .thumbnail:hover',
                     '& .blur:hover',
                     '& .slight-blur:hover',
+                    '& .incognito:hover',
                     '& .virtual-background-none:hover' ]]: {
                     height: '60px',
                     width: '60px'
@@ -216,6 +226,7 @@ const useStyles = makeStyles(theme => {
                     '& .virtual-background-none,',
                     '& .thumbnail,',
                     '& .blur,',
+                    '& .incognito,',
                     '& .slight-blur' ]]: {
                     height: '60px',
                     width: '60px'
@@ -224,6 +235,7 @@ const useStyles = makeStyles(theme => {
                     '& .thumbnail-selected',
                     '& .none-selected',
                     '& .blur-selected',
+                    '& .incognito-selected',
                     '& .slight-blur-selected' ]]: {
                     height: '60px',
                     width: '60px'
@@ -609,7 +621,8 @@ function VirtualBackground({
                             <div
                                 aria-checked = { _selectedThumbnail === 'incognito' }
                                 aria-label = { t('virtualBackground.incognito') }
-                                className = { _selectedThumbnail === 'incognito' ? 'background-option incognito-selected'
+                                className = {
+                                    _selectedThumbnail === 'incognito' ? 'background-option incognito-selected'
                                     : 'background-option incognito' }
                                 onClick = { enableIncognitoMode }
                                 onKeyPress = { enableIncognitoModeKeyPress }

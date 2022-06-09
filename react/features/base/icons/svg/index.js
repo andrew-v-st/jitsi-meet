@@ -148,4 +148,3 @@ export { default as IconWifi3Bars } from './wifi-3.svg';
 export { default as IconYahoo } from './yahoo.svg';
 export { default as IconSip } from './sip.svg';
 export { default as IconIncognitoMode } from './incognito-mode.svg';
-export { default as IconIncognitoMode } from './incognito-mode.svg';

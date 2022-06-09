@@ -468,8 +468,7 @@
         "password": "$t(lockRoomPasswordUppercase): ",
         "sip": "SIP address",
         "title": "Share",
-        "tooltip": "Share link and dial-in info for this meeting",
-        "incognitoMode": "Enable incognito mode"
+        "tooltip": "Share link and dial-in info for this meeting"
     },
     "inlineDialogFailure": {
         "msg": "We stumbled a bit.",
@@ -1003,6 +1002,7 @@
         "header": "Terms"
     },
     "toolbar": {
+        "incognitoMode": "Enable incognito mode",
         "Settings": "Settings",
         "accessibilityLabel": {
             "Settings": "Toggle settings",
