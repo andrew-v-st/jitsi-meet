@@ -44,7 +44,7 @@
     },
     "calendarSync": {
         "addMeetingURL": "Προσθέστε έναν σύνδεσμο συνάντησης",
-        "confirmAddLink": "Θέλετε να προσθέσετε έναν σύνδεσμο Jitsi σε αυτό το γεγονός;",
+        "confirmAddLink": "Θέλετε να προσθέσετε έναν σύνδεσμο WorldERP σε αυτό το γεγονός;",
         "error": {
             "appConfiguration": "Η ενσωμάτωση ημερολόγιου δεν έχει ρυθμιστεί σωστά.",
             "generic": "Παρουσιάστηκε ένα σφάλμα. Παρακαλείστε να ελέγξετε τις ρυθμίσεις ημερολογίου σας ή να δοκιμάσετε να ανανεώσετε το ημερολόγιο.",
@@ -328,7 +328,7 @@
         "answer": "Απάντηση",
         "audioCallTitle": "Εισερχόμενη κλήση",
         "decline": "Απόρριψη",
-        "productLabel": "από το Jitsi Meet",
+        "productLabel": "από το WorldERP Meet",
         "videoCallTitle": "Εισερχόμενη κλήση βίντεο"
     },
     "info": {
@@ -511,7 +511,7 @@
         "newDeviceAction": "Χρήση",
         "newDeviceAudioTitle": "Εντοπίστηκε νέα συσκευή ήχου",
         "newDeviceCameraTitle": "Εντοπίστηκε νέα κάμερα",
-        "oldElectronClientDescription1": "Φαίνεται ότι χρησιμοποιείτε μια παλιά έκδοση του πελάτη Jitsi Meet που έχει γνωστά θέματα ευπάθειας ασφαλείας. Παρακαλώ βεβαιωθείτε ότι έχετε την ενημερωμένη έκδοση για ",
+        "oldElectronClientDescription1": "Φαίνεται ότι χρησιμοποιείτε μια παλιά έκδοση του πελάτη WorldERP Meet που έχει γνωστά θέματα ευπάθειας ασφαλείας. Παρακαλώ βεβαιωθείτε ότι έχετε την ενημερωμένη έκδοση για ",
         "oldElectronClientDescription2": "πρόσφατη έκδοση μας",
         "oldElectronClientDescription3": " τώρα!",
         "passwordRemovedRemotely": "Το $t(lockRoomPasswordUppercase) αφαιρέθηκε από έναν άλλον συμμετέχοντα",

@@ -636,6 +636,40 @@ class Toolbox extends Component<Props> {
     }
 
     /**
+     * Dispatches an action to toggle incognito mode.
+     *
+     * @private
+     * @returns {void}
+     */
+    _doToggleIncognitoMode() {
+        const {
+            _backgroundType,
+            _localVideo,
+            dispatch
+        } = this.props;
+        if (_localVideo? !_localVideo.muted : false) {
+            if (_backgroundType === VIRTUAL_BACKGROUND_TYPE.INCOGNITO) {
+                const noneOptions = {
+                    enabled: false,
+                    backgroundType: VIRTUAL_BACKGROUND_TYPE.NONE,
+                    selectedThumbnail: VIRTUAL_BACKGROUND_TYPE.NONE,
+                    backgroundEffectEnabled: false
+                };
+
+                dispatch(toggleBackgroundEffect(noneOptions, _localVideo.jitsiTrack));
+
+            } else {
+                const incognitoOptions = {
+                    backgroundType: VIRTUAL_BACKGROUND_TYPE.INCOGNITO,
+                    enabled: true,
+                    blurValue: 8,
+                };
+                dispatch(toggleBackgroundEffect(incognitoOptions, _localVideo.jitsiTrack));
+            }
+        }
+    }
+
+    /**
      * Dispatches an action to toggle the video quality dialog.
      *
      * @private
