@@ -1,7 +1,7 @@
 // @flow
 
 import React, { PureComponent } from 'react';
-import { FlatList, Text, View } from 'react-native';
+import { FlatList } from 'react-native';
 import { Button, withTheme } from 'react-native-paper';
 
 import { translate } from '../../../base/i18n';
@@ -13,6 +13,7 @@ import { doInvitePeople } from '../../../invite/actions.native';
 import { participantMatchesSearch, shouldRenderInviteButton } from '../../functions';
 
 import ClearableInput from './ClearableInput';
+import CollapsibleList from './CollapsibleList';
 import MeetingParticipantItem from './MeetingParticipantItem';
 import styles from './styles';
 
@@ -50,9 +51,24 @@ type Props = {
     _sortedRemoteParticipants: Map<string, string>,
 
     /**
+     * List of breakout rooms that were created.
+     */
+    breakoutRooms: Array,
+
+    /**
      * The redux dispatch function.
      */
     dispatch: Function,
+
+    /**
+     * Is the local participant moderator?
+     */
+    isLocalModerator: boolean,
+
+    /**
+     * List of participants waiting in lobby.
+     */
+    lobbyParticipants: Array,
 
     /**
      * Participants search string.
@@ -179,19 +195,38 @@ class MeetingParticipantList extends PureComponent<Props> {
             _participantsCount,
             _showInviteButton,
             _sortedRemoteParticipants,
+            breakoutRooms,
+            isLocalModerator,
+            lobbyParticipants,
             t
         } = this.props;
+        const title = _currentRoom?.name
+
+            // $FlowExpectedError
+            ? `${_currentRoom.name} (${_participantsCount})`
+            : t('participantsPane.headings.participantsList',
+                { count: _participantsCount });
+
+        // Regarding the fact that we have 3 sections, we apply
+        // a certain height percentage for every section in order for all to fit
+        // inside the participants pane container
+        // If there are only meeting participants available,
+        // we take the full container height
+        const onlyMeetingParticipants
+            = breakoutRooms?.length === 0 && lobbyParticipants?.length === 0;
+        const containerStyleModerator
+            = onlyMeetingParticipants
+                ? styles.meetingListFullContainer : styles.meetingListContainer;
+        const containerStyle
+            = isLocalModerator
+                ? containerStyleModerator : styles.notLocalModeratorContainer;
+        const finalContainerStyle
+            = _participantsCount > 6 && containerStyle;
 
         return (
-            <View
-                style = { styles.meetingListContainer }>
-                <Text style = { styles.meetingListDescription }>
-                    {_currentRoom?.name
-
-                        // $FlowExpectedError
-                        ? `${_currentRoom.name} (${_participantsCount})`
-                        : t('participantsPane.headings.participantsList', { count: _participantsCount })}
-                </Text>
+            <CollapsibleList
+                containerStyle = { finalContainerStyle }
+                title = { title } >
                 {
                     _showInviteButton
                     && <Button
@@ -212,11 +247,10 @@ class MeetingParticipantList extends PureComponent<Props> {
                     horizontal = { false }
                     keyExtractor = { this._keyExtractor }
                     renderItem = { this._renderParticipant }
-                    scrollEnabled = { false }
+                    scrollEnabled = { true }
                     showsHorizontalScrollIndicator = { false }
-                    style = { styles.meetingList }
                     windowSize = { 2 } />
-            </View>
+            </CollapsibleList>
         );
     }
 }

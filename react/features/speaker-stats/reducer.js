@@ -8,7 +8,8 @@ import {
     INIT_SEARCH,
     UPDATE_STATS,
     INIT_REORDER_STATS,
-    RESET_SEARCH_CRITERIA
+    RESET_SEARCH_CRITERIA,
+    TOGGLE_FACE_EXPRESSIONS
 } from './actionTypes';
 
 /**
@@ -20,7 +21,8 @@ const INITIAL_STATE = {
     stats: {},
     isOpen: false,
     pendingReorder: true,
-    criteria: null
+    criteria: null,
+    showFaceExpressions: false
 };
 
 ReducerRegistry.register('features/speaker-stats', (state = _getInitialState(), action) => {
@@ -33,6 +35,12 @@ ReducerRegistry.register('features/speaker-stats', (state = _getInitialState(), 
         return _initReorderStats(state);
     case RESET_SEARCH_CRITERIA:
         return _updateCriteria(state, { criteria: null });
+    case TOGGLE_FACE_EXPRESSIONS: {
+        return {
+            ...state,
+            showFaceExpressions: !state.showFaceExpressions
+        };
+    }
     }
 
     return state;

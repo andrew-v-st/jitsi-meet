@@ -88,3 +88,35 @@ export function getColumnCount(stateful: Object | Function) {
 
     return Math.min(3, participantCount);
 }
+
+/**
+ * Returns true if thumbnail reordering is enabled and false otherwise.
+ *
+ * @param {Object} state - The redux state.
+ * @returns {boolean} - True if thumbnail reordering is enabled and false otherwise.
+ */
+export function isReorderingEnabled(state) {
+    const { testing = {} } = state['features/base/config'];
+    const enableThumbnailReordering = testing.enableThumbnailReordering ?? true;
+
+    return enableThumbnailReordering;
+}
+
+/**
+ * Whether the stage filmstrip is available or not.
+ *
+ * @param {Object} state - Redux state.
+ * @returns {boolean}
+ */
+export function isStageFilmstripAvailable() {
+    return false;
+}
+
+/**
+ * Whether the stage filmstrip is enabled.
+ *
+ * @returns {boolean}
+ */
+export function isStageFilmstripEnabled() {
+    return false;
+}

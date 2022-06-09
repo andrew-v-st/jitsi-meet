@@ -5,6 +5,7 @@ declare var APP: Object;
 import COUNTRIES_RESOURCES from 'i18n-iso-countries/langs/en.json';
 import i18next from 'i18next';
 import I18nextXHRBackend from 'i18next-xhr-backend';
+import _ from 'lodash';
 
 import LANGUAGES_RESOURCES from '../../../../lang/languages.json';
 import MAIN_RESOURCES from '../../../../lang/main.json';
@@ -13,9 +14,21 @@ import { I18NEXT_INITIALIZED, LANGUAGE_CHANGED } from './actionTypes';
 import languageDetector from './languageDetector';
 
 /**
+ * Override certain country names.
+ */
+const COUNTRIES_RESOURCES_OVERRIDES = {
+    countries: {
+        TW: 'Taiwan'
+    }
+};
+
+/**
+ * Merged country names.
+ */
+const COUNTRIES = _.merge({}, COUNTRIES_RESOURCES, COUNTRIES_RESOURCES_OVERRIDES);
+
+/**
  * The available/supported languages.
- *
- * XXX The element at index zero is the default language.
  *
  * @public
  * @type {Array<string>}
@@ -25,12 +38,12 @@ export const LANGUAGES: Array<string> = Object.keys(LANGUAGES_RESOURCES);
 /**
  * The default language.
  *
- * XXX The element at index zero of {@link LANGUAGES} is the default language.
+ * English is the default language.
  *
  * @public
  * @type {string} The default language.
  */
-export const DEFAULT_LANGUAGE = LANGUAGES[0];
+export const DEFAULT_LANGUAGE = 'en';
 
 /**
  * The options to initialize i18next with.
@@ -70,7 +83,7 @@ i18next
 i18next.addResourceBundle(
     DEFAULT_LANGUAGE,
     'countries',
-    COUNTRIES_RESOURCES,
+    COUNTRIES,
     /* deep */ true,
     /* overwrite */ true);
 i18next.addResourceBundle(

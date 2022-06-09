@@ -11,6 +11,8 @@ import {
 import { toState } from '../base/redux';
 import { getHideSelfView } from '../base/settings';
 import { parseStandardURIString } from '../base/util';
+import { getBreakoutRoomsConfig, isInBreakoutRoom } from '../breakout-rooms/functions';
+import { isStageFilmstripEnabled } from '../filmstrip/functions';
 import { isFollowMeActive } from '../follow-me';
 import { isReactionsEnabled } from '../reactions/functions.any';
 
@@ -115,6 +117,7 @@ export function getMoreTabProps(stateful: Object | Function) {
     const language = i18next.language || DEFAULT_LANGUAGE;
     const configuredTabs = interfaceConfig.SETTINGS_SECTIONS || [];
     const enabledNotifications = getNotificationsMap(stateful);
+    const stageFilmstripEnabled = isStageFilmstripEnabled(state);
 
     // when self view is controlled by the config we hide the settings
     const { disableSelfView, disableSelfViewSettings } = state['features/base/config'];
@@ -130,7 +133,9 @@ export function getMoreTabProps(stateful: Object | Function) {
         enabledNotifications,
         showNotificationsSettings: Object.keys(enabledNotifications).length > 0,
         showPrejoinPage: !state['features/base/settings'].userSelectedSkipPrejoin,
-        showPrejoinSettings: state['features/base/config'].prejoinConfig?.enabled
+        showPrejoinSettings: state['features/base/config'].prejoinConfig?.enabled,
+        maxStageParticipants: state['features/filmstrip'].maxStageParticipants,
+        stageFilmstripEnabled
     };
 }
 
@@ -153,16 +158,11 @@ export function getModeratorTabProps(stateful: Object | Function) {
     } = state['features/base/conference'];
     const { disableReactionsModeration } = state['features/base/config'];
     const followMeActive = isFollowMeActive(state);
-    const configuredTabs = interfaceConfig.SETTINGS_SECTIONS || [];
-
-    const showModeratorSettings = Boolean(
-        conference
-        && configuredTabs.includes('moderator')
-        && isLocalParticipantModerator(state));
+    const showModeratorSettings = shouldShowModeratorSettings(state);
 
     // The settings sections to display.
     return {
-        showModeratorSettings,
+        showModeratorSettings: Boolean(conference && showModeratorSettings),
         disableReactionsModeration: Boolean(disableReactionsModeration),
         followMeActive: Boolean(conference && followMeActive),
         followMeEnabled: Boolean(conference && followMeEnabled),
@@ -170,6 +170,27 @@ export function getModeratorTabProps(stateful: Object | Function) {
         startAudioMuted: Boolean(conference && startAudioMutedPolicy),
         startVideoMuted: Boolean(conference && startVideoMutedPolicy)
     };
+}
+
+/**
+ * Returns true if moderator tab in settings should be visible/accessible.
+ *
+ * @param {(Function|Object)} stateful - The (whole) redux state, or redux's
+ * {@code getState} function to be used to retrieve the state.
+ * @returns {boolean} True to indicate that moderator tab should be visible, false otherwise.
+ */
+export function shouldShowModeratorSettings(stateful: Object | Function) {
+    const state = toState(stateful);
+    const inBreakoutRoom = isInBreakoutRoom(state);
+    const { hideModeratorSettingsTab } = getBreakoutRoomsConfig(state);
+    const hasModeratorRights = Boolean(
+        isSettingEnabled('moderator')
+        && isLocalParticipantModerator(state)
+    );
+
+    return inBreakoutRoom
+        ? hasModeratorRights && !hideModeratorSettingsTab
+        : hasModeratorRights;
 }
 
 /**

@@ -2,6 +2,11 @@
 
 import React from 'react';
 
+import { Avatar, StatelessAvatar } from '../../../base/avatar';
+import { getInitials } from '../../../base/avatar/functions';
+import BaseTheme from '../../../base/ui/components/BaseTheme';
+import { FACE_EXPRESSIONS } from '../../../face-landmarks/constants.js';
+
 import TimeElapsed from './TimeElapsed';
 
 /**
@@ -15,20 +20,15 @@ type Props = {
     displayName: string,
 
     /**
-     * The object that has as keys the facial expressions of the
+     * The object that has as keys the face expressions of the
      * participant and as values a number that represents the count .
      */
-    facialExpressions: Object,
+    faceExpressions: Object,
 
     /**
-     * True if the client width is les than 750.
+     * True if the face expressions detection is not disabled.
      */
-    reduceExpressions: boolean,
-
-    /**
-     * True if the facial recognition is not disabled.
-     */
-    showFacialExpressions: boolean,
+    showFaceExpressions: boolean,
 
     /**
      * The total milliseconds the participant has been dominant speaker.
@@ -46,97 +46,89 @@ type Props = {
     hasLeft: boolean,
 
     /**
+     * True if the participant is not shown in speaker stats.
+     */
+    hidden: boolean,
+
+    /**
      * True if the participant is currently the dominant speaker.
      */
     isDominantSpeaker: boolean,
 
     /**
+     * Styles for the item.
+     */
+    styles: Object,
+
+    /**
      * Invoked to obtain translated strings.
      */
     t: Function
-};
+}
 
 const SpeakerStatsItem = (props: Props) => {
-    /**
-     * Implements React's {@link Component#render()}.
-     *
-     * @inheritdoc
-     * @returns {ReactElement}
-     */
-    const hasLeftClass = props.hasLeft ? 'status-user-left' : '';
-    const rowDisplayClass = `speaker-stats-item ${hasLeftClass}`;
+    const hasLeftClass = props.hasLeft ? props.styles.hasLeft : '';
+    const rowDisplayClass = `row ${hasLeftClass} ${props.styles.item}`;
+    const expressionClass = 'expression';
+    const nameTimeClass = `name-time${
+        props.showFaceExpressions ? ' name-time_expressions-on' : ''
+    }`;
+    const timeClass = `${props.styles.time} ${props.isDominantSpeaker ? props.styles.dominant : ''}`;
 
-    const dotClass = props.isDominantSpeaker
-        ? 'status-active' : 'status-inactive';
-    const speakerStatusClass = `speaker-stats-item__status-dot ${dotClass}`;
+
+    const FaceExpressions = () => FACE_EXPRESSIONS.map(
+            expression => (
+                <div
+                    aria-label = { props.t(`speakerStats.${expression}`) }
+                    className = {
+                        `${expressionClass} ${
+                            props.faceExpressions[expression] === 0 ? props.styles.hasLeft : ''
+                        }`
+                    }
+                    key = { expression }>
+                    { props.faceExpressions[expression] }
+                </div>
+            )
+    );
 
     return (
         <div
             className = { rowDisplayClass }
             key = { props.participantId } >
-            <div className = 'speaker-stats-item__status'>
-                <span className = { speakerStatusClass } />
+            <div className = { `avatar ${props.styles.avatar}` }>
+                {
+                    props.hasLeft ? (
+                        <StatelessAvatar
+                            className = 'userAvatar'
+                            color = { BaseTheme.palette.ui04 }
+                            id = 'avatar'
+                            initials = { getInitials(props.displayName) } />
+                    ) : (
+                        <Avatar
+                            className = 'userAvatar'
+                            participantId = { props.participantId } />
+                    )
+                }
             </div>
-            <div
-                aria-label = { props.t('speakerStats.speakerStats') }
-                className = { `speaker-stats-item__name${
-                    props.showFacialExpressions ? '_expressions_on' : ''
-                }` }>
-                { props.displayName }
+            <div className = { nameTimeClass }>
+                <div
+                    aria-label = { props.t('speakerStats.speakerStats') }
+                    className = { props.styles.displayName }>
+                    { props.displayName }
+                </div>
+                <div
+                    aria-label = { props.t('speakerStats.speakerTime') }
+                    className = { timeClass }>
+                    <TimeElapsed
+                        time = { props.dominantSpeakerTime } />
+                </div>
             </div>
-            <div
-                aria-label = { props.t('speakerStats.speakerTime') }
-                className = { `speaker-stats-item__time${
-                    props.showFacialExpressions ? '_expressions_on' : ''
-                }` }>
-                <TimeElapsed
-                    time = { props.dominantSpeakerTime } />
-            </div>
-            { props.showFacialExpressions
+            { props.showFaceExpressions
             && (
-                <>
-                    <div
-                        aria-label = { 'Happy' }
-                        className = 'speaker-stats-item__expression'>
-                        { props.facialExpressions.happy }
-                    </div>
-                    <div
-                        aria-label = { 'Neutral' }
-                        className = 'speaker-stats-item__expression'>
-                        { props.facialExpressions.neutral }
-                    </div>
-                    <div
-                        aria-label = { 'Sad' }
-                        className = 'speaker-stats-item__expression'>
-                        { props.facialExpressions.sad }
-                    </div>
-                    <div
-                        aria-label = { 'Surprised' }
-                        className = 'speaker-stats-item__expression'>
-                        { props.facialExpressions.surprised }
-                    </div>
-                    { !props.reduceExpressions && (
-                        <>
-                            <div
-                                aria-label = { 'Angry' }
-                                className = 'speaker-stats-item__expression'>
-                                { props.facialExpressions.angry }
-                            </div>
-                            <div
-                                aria-label = { 'Fearful' }
-                                className = 'speaker-stats-item__expression'>
-                                { props.facialExpressions.fearful }
-                            </div>
-                            <div
-                                aria-label = { 'Disgusted' }
-                                className = 'speaker-stats-item__expression'>
-                                { props.facialExpressions.disgusted }
-                            </div>
-                        </>
-                    )}
-                </>
-            )
-            }
+                <div className = { `expressions ${props.styles.expressions}` }>
+                    <FaceExpressions />
+                </div>
+            )}
         </div>
     );
 };

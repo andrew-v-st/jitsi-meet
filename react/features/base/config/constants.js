@@ -27,7 +27,9 @@ export const TOOLBAR_BUTTONS = [
     'fullscreen',
     'hangup',
     'help',
+    'highlight',
     'invite',
+    'linktosalesforce',
     'livestreaming',
     'microphone',
     'mute-everyone',
@@ -66,5 +68,6 @@ export const THIRD_PARTY_PREJOIN_BUTTONS = [ 'microphone', 'camera','incognito',
  */
 
 export const FEATURE_FLAGS = {
+    MULTIPLE_VIDEO_STREAMS_SUPPORT: 'sendMultipleVideoStreams',
     SOURCE_NAME_SIGNALING: 'sourceNameSignaling'
 };

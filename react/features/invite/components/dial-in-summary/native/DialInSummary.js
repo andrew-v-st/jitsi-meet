@@ -1,17 +1,18 @@
 // @flow
 
-import React, { Component } from 'react';
-import { Linking, View } from 'react-native';
+import React, { PureComponent } from 'react';
+import { Linking, Platform, View } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { type Dispatch } from 'redux';
 
 import { openDialog } from '../../../../base/dialog';
 import { translate } from '../../../../base/i18n';
+import { IconClose } from '../../../../base/icons';
 import JitsiScreen from '../../../../base/modal/components/JitsiScreen';
 import { LoadingIndicator } from '../../../../base/react';
 import { connect } from '../../../../base/redux';
-import { screen } from '../../../../conference/components/native/routes';
-import { renderArrowBackButton } from '../../../../welcome/functions.native';
+import HeaderNavigationButton
+    from '../../../../mobile/navigation/components/HeaderNavigationButton';
 import { getDialInfoPageURLForURIString } from '../../../functions';
 
 import DialInSummaryErrorDialog from './DialInSummaryErrorDialog';
@@ -29,13 +30,18 @@ type Props = {
     /**
      * Default prop for navigating between screen components(React Navigation).
      */
-    route: Object
+    route: Object,
+
+    /**
+     * Translation function.
+     */
+    t: Function
 };
 
 /**
  * Implements a React native component that displays the dial in info page for a specific room.
  */
-class DialInSummary extends Component<Props> {
+class DialInSummary extends PureComponent<Props> {
 
     /**
      * Initializes a new instance.
@@ -58,14 +64,29 @@ class DialInSummary extends Component<Props> {
      * @returns {void}
      */
     componentDidMount() {
-        const {
-            navigation
-        } = this.props;
+        const { navigation, t } = this.props;
+        const onNavigationClose = () => {
+            navigation.goBack();
+        };
 
         navigation.setOptions({
-            headerLeft: () =>
-                renderArrowBackButton(() =>
-                    navigation.navigate(screen.welcome.main))
+            headerLeft: () => {
+                if (Platform.OS === 'ios') {
+                    return (
+                        <HeaderNavigationButton
+                            label = { t('dialog.close') }
+                            // eslint-disable-next-line react/jsx-no-bind
+                            onPress = { onNavigationClose } />
+                    );
+                }
+
+                return (
+                    <HeaderNavigationButton
+                        // eslint-disable-next-line react/jsx-no-bind
+                        onPress = { onNavigationClose }
+                        src = { IconClose } />
+                );
+            }
         });
     }
 

@@ -182,6 +182,10 @@ function getConfig(options = {}) {
                         expandProps: 'start'
                     }
                 } ]
+            }, {
+                test: /\.tsx?$/,
+                exclude: /node_modules/,
+                loader: 'ts-loader'
             } ]
         },
         node: {
@@ -218,6 +222,10 @@ function getConfig(options = {}) {
             extensions: [
                 '.web.js',
 
+                // Typescript:
+                '.tsx',
+                '.ts',
+
                 // Webpack defaults:
                 '.js',
                 '.json'
@@ -249,7 +257,6 @@ function getDevServerConfig() {
                 warnings: false
             }
         },
-        https: true,
         host: '127.0.0.1',
         hot: true,
         proxy: {
@@ -262,6 +269,7 @@ function getDevServerConfig() {
                 }
             }
         },
+        server: 'https',
         static: {
             directory: process.cwd()
         }
@@ -341,16 +349,6 @@ module.exports = (_env, argv) => {
         }),
         Object.assign({}, config, {
             entry: {
-                'flacEncodeWorker': './react/features/local-recording/recording/flac/flacEncodeWorker.js'
-            },
-            plugins: [
-                ...config.plugins,
-                ...getBundleAnalyzerPlugin(analyzeBundle, 'flacEncodeWorker')
-            ],
-            performance: getPerformanceHints(perfHintOptions, 5 * 1024)
-        }),
-        Object.assign({}, config, {
-            entry: {
                 'analytics-ga': './react/features/analytics/handlers/GoogleAnalyticsHandler.js'
             },
             plugins: [
@@ -386,13 +384,13 @@ module.exports = (_env, argv) => {
         }),
         Object.assign({}, config, {
             entry: {
-                'facial-expressions-worker': './react/features/facial-recognition/facialExpressionsWorker.js'
+                'face-landmarks-worker': './react/features/face-landmarks/faceLandmarksWorker.js'
             },
             plugins: [
                 ...config.plugins,
-                ...getBundleAnalyzerPlugin(analyzeBundle, 'facial-expressions-worker')
+                ...getBundleAnalyzerPlugin(analyzeBundle, 'face-landmarks-worker')
             ],
-            performance: getPerformanceHints(perfHintOptions, 1024 * 1024)
+            performance: getPerformanceHints(perfHintOptions, 1024 * 1024 * 1.5)
         })
     ];
 };

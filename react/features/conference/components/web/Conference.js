@@ -11,13 +11,12 @@ import { translate } from '../../../base/i18n';
 import { connect as reactReduxConnect } from '../../../base/redux';
 import { setColorAlpha } from '../../../base/util';
 import { Chat } from '../../../chat';
-import { Filmstrip } from '../../../filmstrip';
+import { MainFilmstrip, StageFilmstrip } from '../../../filmstrip';
 import { CalleeInfoContainer } from '../../../invite';
 import { LargeVideo } from '../../../large-video';
-import { KnockingParticipantList, LobbyScreen } from '../../../lobby';
+import { LobbyScreen } from '../../../lobby';
 import { getIsLobbyVisible } from '../../../lobby/functions';
 import { ParticipantsPane } from '../../../participants-pane/components/web';
-import { getParticipantsPaneOpen } from '../../../participants-pane/functions';
 import { Prejoin, isPrejoinPageVisible } from '../../../prejoin';
 import { toggleToolboxVisible } from '../../../toolbox/actions.any';
 import { fullScreenChanged, showToolbox } from '../../../toolbox/actions.web';
@@ -56,10 +55,11 @@ const FULL_SCREEN_EVENTS = [
  * @private
  * @type {Object}
  */
-const LAYOUT_CLASSNAMES = {
+export const LAYOUT_CLASSNAMES = {
     [LAYOUTS.HORIZONTAL_FILMSTRIP_VIEW]: 'horizontal-filmstrip',
     [LAYOUTS.TILE_VIEW]: 'tile-view',
-    [LAYOUTS.VERTICAL_FILMSTRIP_VIEW]: 'vertical-filmstrip'
+    [LAYOUTS.VERTICAL_FILMSTRIP_VIEW]: 'vertical-filmstrip',
+    [LAYOUTS.STAGE_FILMSTRIP_VIEW]: 'stage-filmstrip'
 };
 
 /**
@@ -71,11 +71,6 @@ type Props = AbstractProps & {
      * The alpha(opacity) of the background.
      */
     _backgroundAlpha: number,
-
-    /**
-     * If participants pane is visible or not.
-     */
-    _isParticipantsPaneVisible: boolean,
 
     /**
      * The CSS class to apply to the root of {@link Conference} to modify the
@@ -101,7 +96,7 @@ type Props = AbstractProps & {
     /**
      * If lobby page is visible or not.
      */
-     _showLobby: boolean,
+    _showLobby: boolean,
 
     /**
      * If prejoin page is visible or not.
@@ -216,7 +211,6 @@ class Conference extends AbstractConference<Props, *> {
      */
     render() {
         const {
-            _isParticipantsPaneVisible,
             _layoutClassName,
             _notificationsVisible,
             _overflowDrawer,
@@ -229,28 +223,24 @@ class Conference extends AbstractConference<Props, *> {
                 id = 'layout_wrapper'
                 onMouseEnter = { this._onMouseEnter }
                 onMouseLeave = { this._onMouseLeave }
-                onMouseMove = { this._onMouseMove } >
+                onMouseMove = { this._onMouseMove }
+                ref = { this._setBackground }>
+                <Chat />
                 <div
                     className = { _layoutClassName }
                     id = 'videoconference_page'
-                    onMouseMove = { isMobileBrowser() ? undefined : this._onShowToolbar }
-                    ref = { this._setBackground }>
+                    onMouseMove = { isMobileBrowser() ? undefined : this._onShowToolbar }>
                     <ConferenceInfo />
-
                     <Notice />
                     <div
                         id = 'videospace'
                         onTouchStart = { this._onVidespaceTouchStart }>
                         <LargeVideo />
-                        {!_isParticipantsPaneVisible
-                         && <div id = 'notification-participant-list'>
-                             <KnockingParticipantList />
-                         </div>}
-                        <Filmstrip />
+                        <StageFilmstrip />
+                        <MainFilmstrip />
                     </div>
 
-                    { _showPrejoin || _showLobby || <Toolbox showDominantSpeakerName = { true } /> }
-                    <Chat />
+                    { _showPrejoin || _showLobby || <Toolbox /> }
 
                     {_notificationsVisible && (_overflowDrawer
                         ? <JitsiPortal className = 'notification-portal'>
@@ -401,7 +391,6 @@ function _mapStateToProps(state) {
     return {
         ...abstractMapStateToProps(state),
         _backgroundAlpha: backgroundAlpha,
-        _isParticipantsPaneVisible: getParticipantsPaneOpen(state),
         _layoutClassName: LAYOUT_CLASSNAMES[getCurrentLayout(state)],
         _mouseMoveCallbackInterval: mouseMoveCallbackInterval,
         _overflowDrawer: overflowDrawer,
